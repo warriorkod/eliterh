@@ -1,0 +1,93 @@
+<form (keydown.enter)="$event.preventDefault()" class="form-style-9" [formGroup]="addForm" (ngSubmit)="addPost(addForm.value)">
+  <span class="titre">Publier une nouvelle offre d'emploi</span>
+  <ul>
+    <li>
+        <input type="text" formControlName="titre" id="ftitre" class="field-style field-split align-left" placeholder="Titre du poste" required />
+        <select formControlName="lieu" id="flieu"  class="field-style field-split align-right" required>
+          <option value="">Lieu du poste</option>
+          <option value="Dakar">Dakar</option>
+          <option value="Diourbel">Diourbel</option>
+          <option value="Fatick">Fatick</option>
+          <option value="Kaffrine">Kaffrine</option>
+          <option value="Kaolack">Kaolack</option>
+          <option value="Kédougou">Kédougou</option>
+          <option value="Kolda">Kolda</option>
+          <option value="5Louga">Louga</option>
+          <option value="Matam">Matam</option>
+          <option value="aint-Louis">Saint-Louis</option>
+          <option value="Sédhiou">Sédhiou</option>
+          <option value="Tambacounda">Tambacounda</option>
+          <option value="Thiès">Thiès</option>
+          <option value="Ziguinchor">Ziguinchor</option>
+      </select>
+    </li>
+    <li>
+        <select formControlName="type" id="ftype"  class="field-style field-split align-left" required>
+          <option value="">Type de contrat</option>
+          <option value="CDI">CDI</option>
+          <option value="CDD">CDD</option>
+          <option value="Stage">Stage</option>
+          <option value="Intérim">Intérim</option>
+          <option value="Prestation de services">Prestation de services</option>
+        </select>
+        <select formControlName="categorie" id="fcategorie"  class="field-style field-split align-right" required>
+          <option value="">Catégorie poste</option>
+          <option value="Cadre">Cadre</option>
+          <option value="Non cadre">Non cadre</option>
+        </select>
+    </li>
+    <li>
+      <select formControlName="secteur" id="fsecteur"  class="field-style field-full align-none" required>
+        <option value="">Secteur du post</option>
+        <option value="Bâtiment et travaux publics">Bâtiment et travaux publics</option>
+        <option value="Immobilier">Immobilier</option>
+        <option value="Télécommunication">Télécommunication</option>
+        <option value="Agroalimentaire">Agroalimentaire</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Industries Alimentaires">Industries Alimentaires</option>
+        <option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</option>
+        <option value="Hôtellerie">Hôtellerie</option>
+        <option value="Hôtellerie">Autres</option>
+      </select>
+    </li>
+    <li>
+      <input type="text" formControlName="structure_name" id="fstructure_name" class="field-style field-split align-left" placeholder="Nom de la structure" required />
+      <input type="date" [min]="minDate" formControlName="date_val" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
+    </li>
+    <li>
+      <input type="text" (keyup.enter)="addCompetences(fcompetences.value)" #fcompetences class="field-style field-full align-none" placeholder="Compétences" />
+    </li>
+    <div class="competences-container" *ngIf="competences.length !== 0">
+      <ul id="competences-list">
+        <li  *ngFor="let competence of competences"> {{competence}} <i (click)="deleteCompetence(competence)" class="fa fa-times-circle"></i> </li>
+      </ul>
+    </div>
+    <li>
+      <editor formControlName="fiche" id="ffiche" class="field-style"
+        initialValue="<p>Initial content of the editor</p>"
+        apiKey="ubn6d83k8mdxng9hvsvhrxzr018cdnzmqxt6vf4mh7vil0ie"
+        [init]="{
+          height: 500,
+          menubar: false,
+          placeholder: 'Missions et responsabilités',
+          plugins: [
+            'advlist autolink lists link image charmap print',
+            'preview anchor searchreplace visualblocks code',
+            'fullscreen insertdatetime media table paste',
+            'help wordcount'
+          ],
+          toolbar:
+            'undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | help'
+        }"
+      required >
+      </editor>
+
+
+    </li>
+    <li>
+      <button [disabled]="!addForm.valid" type="submit" value="" >Enregistrer l'offre d'emploi</button>
+    </li>
+  </ul>
+</form>

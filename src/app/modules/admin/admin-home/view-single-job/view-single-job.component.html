@@ -1,0 +1,174 @@
+<!-- Job Single Content Starts -->
+<section class="job-single-content section-padding1" *ngIf="post">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8" *ngIf="show">
+        <div class="main-content">
+          <div class="single-content1">
+            <div class="single-job mb-4 d-lg-flex justify-content-between">
+              <div class="job-text">
+                <h4>{{post.titre}}</h4>
+                <ul class="mt-4">
+                  <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.structure_name}}</h5></li>
+                  <li><h5><i class="fa fa-clock-o"></i> Deadline Deadline: {{post.date_val}}</h5></li>
+                </ul>
+              </div>
+              <div class="job-btn align-self-center">
+                <a class="forth-btn">{{post.type}}</a>
+              </div>
+            </div>
+          </div>
+          <div class="single-content2 py-4">
+            <h3 class="contain-title">Mission et responsabilité</h3>
+            <div [innerHTML]="post.fiche" class="contain-info">
+            </div>
+          </div>
+          <div class="single-content3 py-4">
+            <h3 class="contain-title">Catégorie du poste</h3>
+            <div class="contain-info">{{post.categorie}}</div>
+          </div>
+          <div class="single-content3 py-4">
+            <h3 class="contain-title">Secteur</h3>
+            <div class="contain-info">{{post.secteur}}</div>
+          </div>
+          <div class="single-content4 py-4">
+            <h3 class="contain-title">Compétences réquises</h3>
+            <div class="competences-list contain-info">
+              <ul id="competences-item">
+                <li *ngFor="let competence of post.competences"> {{competence}} </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12" *ngIf="!show">
+        <div class="main-content">
+          <form (keydown.enter)="$event.preventDefault()" class="form-style-9" [formGroup]="addForm"
+                (ngSubmit)="addPost(addForm.value)">
+            <span class="titre">Modifier l'offre d'emploi</span>
+            <ul>
+              <li>
+                <input type="text" formControlName="titre" id="ftitre" class="field-style field-split align-left"
+                       placeholder="Titre du poste" required/>
+                <select formControlName="lieu" id="flieu" class="field-style field-split align-right" required>
+                  <option value="">Lieu du poste</option>
+                  <option value="Dakar">Dakar</option>
+                  <option value="Diourbel">Diourbel</option>
+                  <option value="Fatick">Fatick</option>
+                  <option value="Kaffrine">Kaffrine</option>
+                  <option value="Kaolack">Kaolack</option>
+                  <option value="Kédougou">Kédougou</option>
+                  <option value="Kolda">Kolda</option>
+                  <option value="5Louga">Louga</option>
+                  <option value="Matam">Matam</option>
+                  <option value="aint-Louis">Saint-Louis</option>
+                  <option value="Sédhiou">Sédhiou</option>
+                  <option value="Tambacounda">Tambacounda</option>
+                  <option value="Thiès">Thiès</option>
+                  <option value="Ziguinchor">Ziguinchor</option>
+                </select>
+              </li>
+              <li>
+                <select formControlName="type" id="ftype" class="field-style field-split align-left" required>
+                  <option value="">Type de contrat</option>
+                  <option value="CDI">CDI</option>
+                  <option value="CDD">CDD</option>
+                  <option value="Stage">Stage</option>
+                  <option value="Intérim">Intérim</option>
+                  <option value="Prestation de services">Prestation de services</option>
+                </select>
+                <select formControlName="categorie" id="fcategorie" class="field-style field-split align-right"
+                        required>
+                  <option value="">Catégorie poste</option>
+                  <option value="Cadre">Cadre</option>
+                  <option value="Non cadre">Non cadre</option>
+                </select>
+              </li>
+              <li>
+                <select formControlName="secteur" id="fsecteur" class="field-style field-full align-none" required>
+                  <option value="">Secteur du post</option>
+                  <option value="Bâtiment et travaux publics">Bâtiment et travaux publics</option>
+                  <option value="Immobilier">Immobilier</option>
+                  <option value="Télécommunication">Télécommunication</option>
+                  <option value="Agroalimentaire">Agroalimentaire</option>
+                  <option value="Commerce">Commerce</option>
+                  <option value="Industries Alimentaires">Industries Alimentaires</option>
+                  <option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</option>
+                  <option value="Hôtellerie">Hôtellerie</option>
+                  <option value="Hôtellerie">Autres</option>
+                </select>
+              </li>
+              <li>
+                <!--
+                <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-full align-none" placeholder="Date de validation" required/>
+                -->
+                <input type="text" formControlName="structure_name" id="fstructure_name"
+                       class="field-style field-split align-left" placeholder="Nom de la structure" required/>
+                <input type="date" [min]="minDate" formControlName="date_val" id="fdate_val"
+                       class="field-style field-split align-right" placeholder="Date de validation" required/>
+              </li>
+              <li>
+                <input type="text" (keyup.enter)="addCompetences(fcompetences.value)" #fcompetences
+                       class="field-style field-full align-none" placeholder="Compétences"/>
+              </li>
+              <div class="competences-container" *ngIf="competences.length !== 0">
+                <ul id="competences-list">
+                  <li *ngFor="let competence of competences"> {{competence}} <i (click)="deleteCompetence(competence)"
+                                                                                class="fa fa-times-circle"></i></li>
+                </ul>
+              </div>
+              <li>
+                <editor formControlName="fiche" id="ffiche" class="field-style"
+                        initialValue="<p>Initial content of the editor</p>"
+                        apiKey="ubn6d83k8mdxng9hvsvhrxzr018cdnzmqxt6vf4mh7vil0ie"
+                        [init]="{
+                                    height: 500,
+                                    menubar: false,
+                                    plugins: [
+                                      'advlist autolink lists link image charmap print',
+                                      'preview anchor searchreplace visualblocks code',
+                                      'fullscreen insertdatetime media table paste',
+                                      'help wordcount'
+                                    ],
+                                    toolbar:
+                                      'undo redo | formatselect | bold italic | \
+                                      alignleft aligncenter alignright alignjustify | \
+                                      bullist numlist outdent indent | help'
+                                  }"
+                        required>
+                </editor>
+
+
+              </li>
+              <li>
+                <button [disabled]="addForm.invalid" type="submit" value="">Enregistrer l'offre d'emploi</button>
+                <input type="button" (click)="getBack()" class="align-right" value="Retour"/>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4" *ngIf="show">
+        <div class="sidebar">
+          <div class="single-item mb-4">
+            <h4 class="mb-4">Options</h4>
+            <a (click)="showUpdateSection()" class="sidebar-btn d-flex justify-content-between mb-3">
+              <span>Modifier le poste</span>
+            </a>
+            <a (click)="supprimerPost()" class="sidebar-btn d-flex justify-content-between mb-3">
+              <span>Supprimer le poste</span>
+            </a>
+            <a (click)="viewCandidatures()" class="sidebar-btn d-flex justify-content-between mb-3">
+              <span>Voir les candidatures</span>
+            </a>
+            <a (click)="getBackListPost()" class="sidebar-btn d-flex justify-content-between mb-3">
+              <span>Retour</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Job Single Content End -->

@@ -1,0 +1,7 @@
+<app-loading-screen *ngIf="loading"></app-loading-screen>
+<ng-container>
+  <app-header></app-header>
+  <app-list-job (listLoader)='setListLoader($event)' *ngIf="show"></app-list-job>
+  <app-single-job (singleLoader)='setSingleLoader($event)' *ngIf="!show"></app-single-job>
+  <app-footer></app-footer>
+</ng-container>

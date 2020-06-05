@@ -1,0 +1,62 @@
+
+.content-all{
+    width: 100%;
+    padding-left: 5%;
+}
+.content-body{
+    padding-top: 2%;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 50px;
+}
+
+.filter{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.input{
+  border-radius: 10px;
+  height: 25px;
+  width: 150px;
+  padding: 2px;
+  background-color: white;
+}
+
+.filter label{
+  margin-left: 50px;
+}
+
+.pagination{
+    float: right;
+    margin-right: 30px;
+}
+
+.list-length {
+  margin-left: 100px;
+  color: black;
+  font-size: 25px;
+}
+
+.error-info {
+  font-size: 35px;
+}
+.job-btn {
+  cursor: pointer;
+}
+
+.job-btn a: hover {
+  color: white;
+}
+
+.candidature-info {
+  background-color: white;
+  height: 300px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 3%;
+}
+
+.info-list {
+  font-size: 18px;
+}

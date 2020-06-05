@@ -1,0 +1,22 @@
+.container-users{
+  height: 100vh;
+  width: 90%;
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  justify-content: center;
+  color: black;
+}
+
+td {
+  width: 10%;
+  font-size: 16px;
+  text-align: center;
+}
+
+th {
+  width: 10%;
+  font-size: 18px;
+  text-align: center;
+}

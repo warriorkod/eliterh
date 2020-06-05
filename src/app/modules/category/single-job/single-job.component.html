@@ -1,0 +1,169 @@
+    <!-- Job Single Content Starts -->
+    <section class="job-single-content section-padding" *ngIf="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="main-content">
+                        <div class="single-content1">
+                            <div class="single-job mb-4 d-lg-flex justify-content-between">
+                                <div class="job-text">
+                                    <h1>{{post.titre}}</h1>
+                                    <ul class="mt-4">
+                                        <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                        <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                        <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                        <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>                                    </ul>
+                                </div>
+                                <div class="job-btn align-self-center">
+                                    <a class="forth-btn">{{post.type}}</a>
+                                    <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-content3 py-4">
+                            <h3 class="contain-title h-transform">Secteur du poste</h3>
+                            <div class="contain-info">{{post.secteur}}</div>
+                        </div>
+                        <div class="single-content3 py-4">
+                            <h3 class="contain-title h-transform">Catégorie du poste</h3>
+                            <div class="contain-info">{{post.categorie}}</div>
+                        </div>
+                        <div class="single-content2 py-4">
+                          <h3 class="contain-title h-transform">Missions et responsabilités</h3>
+                          <div [innerHTML]="post.fiche" class="contain-info">
+                          </div>
+                      </div>
+                      <div class="single-content4 py-4">
+                          <h3 class="contain-title h-transform">Compétences réquises</h3>
+                          <div class="competences-list  contain-info">
+                              <ul id="competences-item">
+                                <li  *ngFor="let competence of post.competences"> {{competence}} </li>
+                              </ul>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="single-item mb-4">
+                            <h2 class="mb-4">Options</h2>
+                            <a (click)="showPostulerPopup()" class="sidebar-btn d-flex justify-content-between mb-3">
+                                <span >Postuler</span>
+                            </a>
+                            <a (click)="getBackListPost()" class="sidebar-btn d-flex justify-content-between mb-3">
+                                <span >Voir la liste des jobs</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Job Single Content End -->
+
+    <swal #subscribe title="Modifier votre profil"  icon="info"  [showConfirmButton]= false>
+        <!-- This form will be displayed as the alert main content
+             Targets the alert's main content zone by default -->
+            <form *swalPortal [formGroup]="userInfo"  (ngSubmit)="postuler(userInfo.value)">
+                <mat-dialog-content >
+                    <!-- Form fields -->
+                    <mat-form-field>
+                        <input  matInput  placeholder="Prenom" type="text" formControlName="prenom"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input  matInput  placeholder="Nom" type="text" formControlName="nom"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input  matInput  placeholder="Téléphone" type="tel" formControlName="tel"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input  matInput  placeholder="Date de naissance" type="date" formControlName="date_naissance"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select formControlName="civilite" id="fcivilite" required>
+                            <mat-option value="">Civilité</mat-option>
+                            <mat-option value="Mr">Mr</mat-option>
+                            <mat-option value="Mme">Mme</mat-option>
+                            <mat-option value="Mlle">Mlle</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input  matInput  placeholder="Adresse" type="text" formControlName="adresse"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select formControlName="niveau_etude" id="fniveau_etude" required>
+                            <mat-option value="">Niveau d'étude</mat-option>
+                            <mat-option value="BFEM">BFEM</mat-option>
+                            <mat-option value="BAC">BAC</mat-option>
+                            <mat-option value="BAC+1">BAC+1</mat-option>
+                            <mat-option value="BAC+2">BAC+2</mat-option>
+                            <mat-option value="BAC+3">BAC+3</mat-option>
+                            <mat-option value="BAC+4">BAC+4</mat-option>
+                            <mat-option value="BAC+5">BAC+5</mat-option>
+                            <mat-option value="+BAC+5">+BAC+5</mat-option>
+                        </mat-select>
+                    </mat-form-field><mat-form-field>
+                        <mat-select formControlName="niveau_experience" id="fniveau_experience" required>
+                            <mat-option value="">Niveau d'expérience</mat-option>
+                            <mat-option value="moins d'un an">Moins d'un an</mat-option>
+                            <mat-option value="1 à 3ans">1 à 3ans</mat-option>
+                            <mat-option value="3 à 5ans">3 à 5ans</mat-option>
+                            <mat-option value="5 à 10ans">5 à 10ans</mat-option>
+                            <mat-option value="plus de 10ans">Plus de 10ans</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select formControlName="lieu" id="flieu" required>
+                            <mat-option value="">Lieu du poste</mat-option>
+                            <mat-option value="Dakar">Dakar</mat-option>
+                            <mat-option value="Diourbel">Diourbel</mat-option>
+                            <mat-option value="Fatick">Fatick</mat-option>
+                            <mat-option value="Kaffrine">Kaffrine</mat-option>
+                            <mat-option value="Kaolack">Kaolack</mat-option>
+                            <mat-option value="Kédougou">Kédougou</mat-option>
+                            <mat-option value="Kolda">Kolda</mat-option>
+                            <mat-option value="5Louga">Louga</mat-option>
+                            <mat-option value="Matam">Matam</mat-option>
+                            <mat-option value="aint-Louis">Saint-Louis</mat-option>
+                            <mat-option value="Sédhiou">Sédhiou</mat-option>
+                            <mat-option value="Tambacounda">Tambacounda</mat-option>
+                            <mat-option value="Thiès">Thiès</mat-option>
+                            <mat-option value="Ziguinchor">Ziguinchor</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select formControlName="domaine_actuel" id="fdomaine_actuel" required>
+                            <mat-option value="">Secteur du poste occupé</mat-option>
+                            <mat-option value="Bâtiment et travaux publics">Bâtiment et travaux publics</mat-option>
+                            <mat-option value="Immobilier">Immobilier</mat-option>
+                            <mat-option value="Télécommunication">Télécommunication</mat-option>
+                            <mat-option value="Agroalimentaire">Agroalimentaire</mat-option>
+                            <mat-option value="Commerce">Commerce</mat-option>
+                            <mat-option value="Industries Alimentaires">Industries Alimentaires</mat-option>
+                            <mat-option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</mat-option>
+                            <mat-option value="Hôtellerie">Hôtellerie</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select formControlName="domaine_recherche" id="fdomaine_recherche" required>
+                            <mat-option value="">Secteur du poste recherché</mat-option>
+                            <mat-option value="Bâtiment et travaux publics">Bâtiment et travaux publics</mat-option>
+                            <mat-option value="Immobilier">Immobilier</mat-option>
+                            <mat-option value="Télécommunication">Télécommunication</mat-option>
+                            <mat-option value="Agroalimentaire">Agroalimentaire</mat-option>
+                            <mat-option value="Commerce">Commerce</mat-option>
+                            <mat-option value="Industries Alimentaires">Industries Alimentaires</mat-option>
+                            <mat-option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</mat-option>
+                            <mat-option value="Hôtellerie">Hôtellerie</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-dialog-content>
+                <mat-dialog-actions>
+                    <button [disabled]="userInfo.invalid" class="mat-raised-button mat-primary" type="submit">Mettre à jour mon profil et valider</button>
+                </mat-dialog-actions>
+            </form>
+            <ng-container *swalPortal="swalTargets.cancelButton">
+                Fermer
+            </ng-container>
+    </swal>
+    <app-scroll-top></app-scroll-top>

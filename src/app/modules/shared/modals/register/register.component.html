@@ -1,0 +1,110 @@
+<div class="common-modal">
+    <h2 mat-dialog-title>Créer un compte</h2>
+    <form action="" [formGroup]="register"  (ngSubmit)="createUser(register.value)">
+        <mat-dialog-content >
+            <!-- Form fields -->
+            <mat-form-field>
+                <input  matInput  placeholder="Prenom" type="text" formControlName="prenom"  required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput  placeholder="Nom" type="text" formControlName="nom"  required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput  placeholder="Téléphone" type="tel" formControlName="tel"  required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput  placeholder="Confirmation mot de passe"  type="password"  formControlName="password_confirm"  required>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput  placeholder="Date de naissance" type="date" formControlName="date_naissance"  required>
+            </mat-form-field> 
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button class="mat-raised-button"(click)="close()">Close</button>
+            <button class="mat-raised-button mat-primary" type="submit">Créer</button>
+        </mat-dialog-actions> 
+    </form>
+
+</div>
+<!--
+<form class="form-style-9" [formGroup]="addForm" (ngSubmit)="addPost(addForm.value)">
+  <span class="titre">Publier une nouvelle offre d'emploi</span>
+  <ul>
+    <li>
+        <input type="text" formControlName="titre" id="ftitre" class="field-style field-split align-left" placeholder="Titre du poste" required />
+        <select formControlName="lieu" id="flieu"  class="field-style field-split align-right" required>
+          <option value="">Lieu du poste</option>
+          <option value="Dakar">Dakar</option>
+          <option value="Diourbel">Diourbel</option>
+          <option value="Fatick">Fatick</option>
+          <option value="Kaffrine">Kaffrine</option>
+          <option value="Kaolack">Kaolack</option>
+          <option value="Kédougou">Kédougou</option>
+          <option value="Kolda">Kolda</option>
+          <option value="5Louga">Louga</option>
+          <option value="Matam">Matam</option>
+          <option value="aint-Louis">Saint-Louis</option>
+          <option value="Sédhiou">Sédhiou</option>
+          <option value="Tambacounda">Tambacounda</option>
+          <option value="Thiès">Thiès</option>
+          <option value="Ziguinchor">Ziguinchor</option>
+      </select>
+    </li>
+    <li>
+        <select formControlName="type" id="ftype"  class="field-style field-split align-left" required>
+          <option value="">Type de contrat</option>
+          <option value="Temps partiel">Temps partiel</option>
+          <option value="Temps plein">Temps plein</option>
+          <option value="Travail de bureau">Travail de bureau</option>
+          <option value="Travail à distance">Travail à distance</option>
+        </select>
+        <select formControlName="categorie" id="fcategorie"  class="field-style field-split align-right" required>
+          <option value="">Catégorie poste</option>
+          <option value="Cadre">Cadre</option>
+          <option value="Non cadre">Non cadre</option>
+        </select> 
+    </li>
+    <li>
+      <select formControlName="secteur" id="fsecteur"  class="field-style field-full align-none" required>
+        <option value="">Secteur du post</option>
+        <option value="Bâtiment et travaux publics">Bâtiment et travaux publics</option>
+        <option value="Immobilier">Immobilier</option>
+        <option value="Télécommunication">Télécommunication</option>
+        <option value="Agroalimentaire">Agroalimentaire</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Industries Alimentaires">Industries Alimentaires</option>
+        <option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</option>
+        <option value="Hôtellerie">Hôtellerie</option>
+
+      </select> 
+    </li>
+    <li>
+      <!--
+      <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-full align-none" placeholder="Date de validation" required/>
+      -->
+      <!--
+      <input type="text" formControlName="structure_name" id="fstructure_name" class="field-style field-split align-left" placeholder="Nom de la structure" required />
+      <input type="date" [min]="minDate" formControlName="date_val" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
+    </li>
+    <li>
+      <textarea formControlName="fiche" id="ffiche" class="field-style" placeholder="Fiche de poste" required></textarea>
+    </li>
+    <li>
+      <textarea formControlName="competences" id="fcompetences" class="field-style" placeholder="Compétences" required></textarea>
+    </li>
+    <li>
+      <input type="submit" value="Enregistrer l'offre d'emploi" />
+    </li>
+  </ul>
+</form>
+
+-->
+
+
+    

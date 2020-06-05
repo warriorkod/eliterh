@@ -1,0 +1,100 @@
+
+.content-all{
+    width: 100%;
+    padding-left: 5%;
+}
+.content-body{
+    padding-top: 2%;
+    width: 100%;
+    height: 800px;
+    margin-bottom: 50px;
+}
+
+.list-item{
+    background-color: white;
+    padding: 30px;
+    list-style-type: none;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    width: 22%;
+    float: left;
+}
+
+.list :hover{
+    background-color: seashell;
+}
+
+
+.row{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.card-header {
+  width: 100%;
+}
+
+.card-body {
+    height: 100px;
+}
+
+.column {
+    width: 100%;
+}
+
+.date{
+    float: right;
+    font-weight: lighter;
+}
+.lieu{
+    float: left;
+    font-weight: lighter;
+}
+
+.divider{
+    width: 100%;
+    border: 0.5px black solid;
+    margin-bottom: 10px;
+}
+
+.filter{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.input{
+  border-radius: 10px;
+  height: 25px;
+  width: 150px;
+  padding: 2px;
+  background-color: white;
+}
+
+.filter label{
+  margin-left: 50px;
+}
+
+.pagination{
+    float: right;
+    margin-right: 30px;
+}
+
+.btn{
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.list-length {
+  margin-left: 100px;
+  color: black;
+  font-size: 25px;
+}
+

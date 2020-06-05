@@ -1,0 +1,24 @@
+<div class="container-users">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Structure</th>
+        <th>Titre du poste</th>
+        <th>Secteur</th>
+        <th>Lieu</th>
+        <th>Date de création</th>
+        <th>Fin validité</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of posts" (click)="open(item)">
+        <td>{{ item.structure_name }}</td>
+        <td>{{ item.titre }}</td>
+        <td>{{ item.secteur }}</td>
+        <td>{{ item.lieu }}</td>
+        <td>{{ item.date_create }}</td>
+        <td>{{ item.date_val }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

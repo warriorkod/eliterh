@@ -1,0 +1,37 @@
+.activeLink{
+  color: #fff;
+	background: #1a393b;
+	border: 1px solid transparent
+}
+
+.activeLi{
+    color: #ff9902;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+	visibility: visible
+}
+
+.activeLi:after{
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+	visibility: visible
+}
+
+.sidebar a:hover{
+  color: white;
+  cursor: pointer;
+  background-color: #1a393b;
+}
+
+.template-btn{
+  background-color: #1a393b;
+}
+
+.errorPostVide{
+  padding: 10%;
+}
+.job-btn img{
+  margin-left: 20px;
+  height: 30px;
+  width: 70px;
+}

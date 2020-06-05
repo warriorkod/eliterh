@@ -1,0 +1,67 @@
+.menu-btn a{
+    cursor: pointer;
+}
+
+@media (min-width: 991.98px) and (max-width: 1190.98px) {
+  .logo-area img {
+    height: 60px;
+    width: 125px;
+  }
+}
+
+@media (max-width: 990.98px) {
+  .logo-area img {
+    height: 50px;
+    width: 100px;
+  }
+}
+
+.logo-area a {
+    color: black;
+    font-size: 35px;
+    font-weight: 400;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: .1em;
+    line-height: 20px;
+
+}
+
+.logo-area-bis a {
+  top: 50px;
+    color: white;
+    font-size: 35px;
+    font-weight: 400;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: .1em;
+    line-height: 20px;
+}
+
+
+.logoelite{
+    height: 70px;
+    width: -moz-fit-content;
+}
+
+
+
+mat-form-field{
+    width: 100%;
+    padding: 1%;
+}
+
+.mat-raised-button{
+    width: 30%;
+    height: 50px;
+}
+
+.main-menu-active{
+  color: #35a087;
+  font-size: 12px;
+  font-weight: 700;
+  bottom: 1px;
+  border-width: 0 0 2px;
+  border-style: solid;
+}
+.dark_error{
+  color: red;
+}

@@ -1,0 +1,367 @@
+<ng-container *ngIf="!loading">
+  <app-header></app-header>
+  <!-- Banner Area Starts -->
+  <section class="banner-area">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12 px-0">
+                  <div class="banner-bg">
+                      <ngb-carousel
+                      [showNavigationArrows]="true"
+                      [showNavigationIndicators]="false"
+                      interval="3000"
+                      [keyboard]="true"
+                      [pauseOnHover]="true"
+                      [wrap]="true"
+                      [activeId]="'secondSlide'"
+                      >
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img src="../../../assets/images/front-image/accueil1-min.jpg" alt="Angular Carousel 1">
+                            </div>
+                            <div class="carousel-caption">
+                              <h3 class="title">Elite RH</h3>
+                              <p>Unissons nos compétences !!!</p>
+                            </div>
+                          </ng-template>
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img src="../../../assets/images/front-image/accueil2-min.jpg" alt="Angular Carousel 1">
+                            </div>
+                            <div class="carousel-caption">
+                              <h3 class="title">Elite RH</h3>
+                              <p>Unissons nos compétences !!!</p>
+                            </div>
+                          </ng-template>
+                          <ng-template ngbSlide>
+                              <div class="picsum-img-wrapper">
+                                <img src="../../../assets/images/front-image/accueil3-min.jpg" alt="Angular Carousel 1">
+                              </div>
+                              <div class="carousel-caption">
+                                  <h3 class="title">Elite RH</h3>
+                                <p>Unissons nos compétences !!!</p>
+                              </div>
+                          </ng-template>
+                        </ngb-carousel>
+                  </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                 <div class="opacity-header">
+                  <p class="top-text-first" *ngIf="showText">
+                    Vous êtes à la recherche d&#39;un emploi qui cadre avec vos ambitions ? 
+                    Vous êtes directeur d&#39;entreprise ou manager à la recherche de nouveaux
+                    collaborateurs ?
+                  </p>
+                   <p class="top-text-second" *ngIf="!showText">
+                      Elite RH crée des opportunités d&#39;emplois pour les candidats en phase avec vos
+                      visions et vos plans de carrière.
+                      Aux entreprises, nous vous offrons des solutions RH sur mesure afin de répondre
+                      amplement à vos besoins concernant le placement permanent ou temporaire.
+                   </p>
+                   <a *ngIf="showText" (click)="switchText()" class=" btn secondary-btn"> <i class="fa fa-arrow-right fa-3x"></i></a>
+                   <a *ngIf="!showText" (click)="switchText()" class=" btn secondary-btn"><i class="fa fa-arrow-left fa-3x"></i></a>
+                 </div>
+              </div>
+
+              <div class="col-lg-3 align-self-center animate">
+                  <div class="banner-text">
+                      <h1>Avec Elite RH, trouvez le <span>job</span> de vos rêves</h1>
+                      <p class="py-3">Bienvenue dans le monde des ressources humaines avec Elite RH, la référence dans le domaine. Chez nous, nos offres sont calibrées et adaptées aux besoins de nos clients. Nous n'avons qu'un seul et unique objectif : « Renforcer vos performances en vous offrant les
+                        <br> meilleurs profils ».</p>
+                      <a href="#" routerLink="/job" class="btn secondary-btn">Voir les offres d'emploi<span class="flaticon-next"></span></a>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
+  <!-- Banner Area End -->
+
+  <!-- Search Area Starts -->
+  <div class="search-area">
+      <div class="search-bg">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <form [formGroup]="searchObject"  (ngSubmit)="search(searchObject.value)" class="d-md-flex justify-content-between">
+                          <select formControlName="type" id="ftype">
+                            <option value="">Type de contrat</option>
+                            <option value="CDI">CDI</option>
+                            <option value="CDD">CDD</option>
+                            <option value="Stage">Stage</option>
+                            <option value="Intérim">Intérim</option>
+                            <option value="Prestation de services">Prestation de services</option>
+                          </select>
+                          <select formControlName="region" id="region">
+                              <option value="">Selectionner la région</option>
+                              <option value="Dakar">Dakar</option>
+                              <option value="Diourbel">Diourbel</option>
+                              <option value="Fatick">Fatick</option>
+                              <option value="Kaffrine">Kaffrine</option>
+                              <option value="Kaolack">Kaolack</option>
+                              <option value="Kédougou">Kédougou</option>
+                              <option value="Kolda">Kolda</option>
+                              <option value="Louga">Louga</option>
+                              <option value="Matam">Matam</option>
+                              <option value="Saint-Louis">Saint-Louis</option>
+                              <option value="Sédhiou">Sédhiou</option>
+                              <option value="Tambacounda">Tambacounda</option>
+                              <option value="Thiès">Thiès</option>
+                              <option value="Ziguinchor">Ziguinchor</option>
+                          </select>
+                          <select formControlName="secteur" id="secteur" required>
+                            <option value="">Secteur du poste recherché</option>
+                            <option value="Bâtiment et travaux publics">Bâtiment et travaux publics</option>
+                            <option value="Immobilier">Immobilier</option>
+                            <option value="Télécommunication">Télécommunication</option>
+                            <option value="Agroalimentaire">Agroalimentaire</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Industries alimentaires">Industries alimentaires</option>
+                            <option value="Banques et établissements financiers">Banques et finances</option>
+                            <option value="Hôtellerie">Hôtellerie</option>
+                            <option value="Autres">Autres</option>
+                        </select>
+                          <button type="submit" class="template-btn">Trouvez un job</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Search Area End -->
+
+   <!-- Feature Area Starts -->
+   <section class="feature-area section-padding2">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="section-top text-center">
+                      <h2>Nos services</h2>
+                      <p>
+                        Elite RH entend accompagner ses clients et ses candidats tout en leur garantissant un service de qualité dans le plus grand professionnalisme.
+                      </p>
+                  </div>
+              </div>
+          </div>
+            <div class="row row-service">
+              <div class="col-lg-3">
+                <div class="single-feature-image mb-4 mb-lg-0">
+                  <img src="../../../assets/images/front-image/service-interim-min.jpg" alt="">
+                </div>
+                <div class="single-feature mb-4 mb-lg-0">
+                  <h4>Intérim</h4>
+                  <span class="bottom-check"><a href="#" routerLink="/service" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="single-feature-image mb-4 mb-lg-0">
+                  <img src="../../../assets/images/front-image/recrutement-min.jpg" alt="">
+                </div>
+                <div class="single-feature mb-4 mb-lg-0">
+                  <h4>Recrutement</h4>
+                  <span class="bottom-check"><a href="#" routerLink="/service" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="single-feature-image mb-4 mb-lg-0">
+                  <img src="../../../assets/images/front-image/service-formation-min.jpg" alt="">
+                </div>
+                <div class="single-feature mb-4 mb-lg-0">
+                  <h4>Formation</h4>
+                  <span class="bottom-check"><a href="#" routerLink="/service" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="single-feature-image mb-4 mb-lg-0">
+                  <img src="../../../assets/images/front-image/service-exter-min.jpg" alt="">
+                </div>
+                <div class="single-feature mb-4 mb-lg-0">
+                  <h4 class="h-transform">Externalisation de la paie</h4>
+                  <span class="bottom-check"><a href="#" routerLink="/service" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
+                </div>
+              </div>
+            </div>
+      </div>
+    </section>
+    <!-- Feature Area End -->
+
+  <!-- Category Area Starts -->
+  <section class="category-area section-padding">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="section-top text-center">
+                      <h2>Trouver un emploi par secteur</h2>
+                      <p>Choisir un secteur d'emplois pour accéder à la liste des postes correspondants</p>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-3 col-md-6"  (click)="searchSecteur(secteur.nom)" *ngFor="let secteur of secteurs; let i = index">
+                  <div class="single-category category-job text-center mb-4">
+                      <img src="assets/images/categories/{{secteur.img}}" alt="category">
+                      <h4>{{secteur.nom}}</h4>
+                      <h5>{{getPostStat(secteur.nom)}}  job</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Category Area End -->
+
+  <!-- Jobs Area Starts -->
+  <section class="jobs-area section-padding3">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="jobs-title">
+                      <h2>Parcourir les emplois récents</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="jobs-tab tab-item">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="changeCurrenType('', 0)" id="home-tab" data-toggle="tab" href="#recent" role="tab" aria-controls="home" aria-selected="true">récent</a>
+                          </li>
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="changeCurrenType('CDI', 1)" id="profile-tab" data-toggle="tab" href="#full-time" role="tab" aria-controls="profile" aria-selected="false">CDI</a>
+                          </li>
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="changeCurrenType('CDD', 2)" id="contact-tab" data-toggle="tab" href="#part-time" role="tab" aria-controls="part-time" aria-selected="false">CDD</a>
+                          </li>
+                          <li class="nav-item li-active">
+                            <a class="nav-link" (click)="changeCurrenType('Prestation de services', 3)" id="profile-tab" data-toggle="tab" href="#prestation" role="tab" aria-controls="profile" aria-selected="false">Prestation de services</a>
+                          </li>
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="changeCurrenType('Intérim', 4)" id="contact-tab" data-toggle="tab" href="#interim" role="tab" aria-controls="part-time" aria-selected="false">Intérim</a>
+                          </li>
+                          <li class="nav-item li-active">
+                            <a class="nav-link" (click)="changeCurrenType('Stage', 3)" id="profile-tab" data-toggle="tab" href="#stage" role="tab" aria-controls="profile" aria-selected="false">Stage</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | lazyFilter : size; let i = index">
+                          <div class="job-text">
+                              <h4>{{post.titre}}</h4>
+                              <ul class="mt-4">
+                                  <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                              </ul>
+                          </div>
+                          <div class="job-btn align-self-center">
+                              <a class="forth-btn">{{post.type}}</a>
+                              <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                          </div>
+                    </div>
+                      </div>
+                      <div class="tab-pane fade" id="full-time" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
+                          <div class="job-text">
+                              <h4>{{post.titre}}</h4>
+                              <ul class="mt-4">
+                                  <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                              </ul>
+                          </div>
+                          <div class="job-btn align-self-center">
+                              <a class="forth-btn">{{post.type}}</a>
+                              <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="part-time" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
+                            <div class="job-text">
+                                <h4>{{post.titre}}</h4>
+                                <ul class="mt-4">
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>                                </ul>
+                                </div>
+                            <div class="job-btn align-self-center">
+                                <a class="forth-btn">{{post.type}}</a>
+                              <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="tab-pane fade" id="stage" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
+                            <div class="job-text">
+                                <h4>{{post.titre}}</h4>
+                                <ul class="mt-4">
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                                </ul>
+                            </div>
+                            <div class="job-btn align-self-center">
+                                <a class="forth-btn">{{post.type}}</a>
+                                <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="tab-pane fade" id="interim" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
+                            <div class="job-text">
+                                <h4>{{post.titre}}</h4>
+                                <ul class="mt-4">
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                                </ul>
+                            </div>
+                            <div class="job-btn align-self-center">
+                                <a class="forth-btn">{{post.type}}</a>
+                                <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="tab-pane fade" id="prestation" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
+                            <div class="job-text">
+                                <h4>{{post.titre}}</h4>
+                                <ul class="mt-4">
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                                </ul>
+                            </div>
+                            <div class="job-btn align-self-center">
+                                <a class="forth-btn">{{post.type}}</a>
+                                <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div  class="more-job-btn mt-5 text-center">
+            <a (click)="getMorePost()" class="template-btn">Voir plus de jobs</a>
+          </div>
+      </div>
+  </section>
+  <!-- Jobs Area End -->
+
+  <!-- Download Area End -->
+  <app-footer></app-footer>
+  <app-scroll-top></app-scroll-top>
+
+</ng-container>
+<app-loading-screen *ngIf="loading"></app-loading-screen>

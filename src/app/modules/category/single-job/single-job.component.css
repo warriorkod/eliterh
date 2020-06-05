@@ -1,0 +1,92 @@
+mat-form-field{
+    width: 100%;
+    padding: 1%;
+}
+
+.mat-raised-button{
+    width: 30%;
+    height: 50px;
+    align-items: center;
+}
+
+.sidebar a:hover{
+  color: white;
+  cursor: pointer;
+  background-color: #1a393b;
+}
+
+
+.competences-container{
+	min-height: 100px;
+	width: 100%;
+	border-bottom: 1px;
+	border-left: 1px;
+	border-right: 1px;
+	border-top: 0;
+	border-color: black;
+	border-style: solid;
+	padding: 10px;
+}
+#competences-list li {
+	display: inline;
+}
+
+#competences-list{
+	min-width: 696px;
+	border-spacing: 20px;
+}
+
+#competences-list li{
+	background-color: black;
+	color: white;
+	width: fit-content;
+	height: 50px;
+	padding: 10px;
+	margin-left: 5px;
+	margin-bottom: 25px;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+.contain-info{
+	background-color: white;
+	padding: 20px;
+	border-radius: 50px;
+	border: 1px solid black;
+  box-shadow: 1px 3px #1a393b;
+  color: #1a393b;
+  margin-bottom: 50px;
+  font-size: 20px;
+
+}
+
+.contain-title{
+	background-color: #ffffff;
+	color: #1a393b;
+	width: fit-content;
+	padding: 15px;
+	border-radius: 25px;
+	border: 1px solid white;
+	box-shadow: 1px 4px 1a393b;
+}
+
+.job-text{
+  font-size: 20px;
+  color: #1a393b;
+}
+
+.sidebar .single-item{
+  font-size: 20px;
+  color: #1a393b;
+}
+
+form{
+  font-size: 20px;
+  color: #1a393b;
+}
+.job-btn img{
+  margin-left: 20px;
+  height: 30px;
+  width: 70px;
+}
+

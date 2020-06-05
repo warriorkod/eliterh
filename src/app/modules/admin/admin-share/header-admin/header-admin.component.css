@@ -1,0 +1,40 @@
+
+.header{
+    background-color: black;
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.logo{
+    height: 50px;
+    margin-top: 5px ;
+    margin-bottom: 5px;
+    margin-left: 60px;
+    vertical-align: auto;
+    width: 150px;
+    background-color: white;
+    border-radius: 20%;
+}
+
+.btn{
+    align-content: center;
+    float: right;
+    height: 50px;
+    margin-top: 5px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
