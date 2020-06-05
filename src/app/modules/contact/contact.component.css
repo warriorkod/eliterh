@@ -1,8 +1,18 @@
-#map {
-    height: 500px;
-    width: 100%;
-}
-
 #link_contact {
   margin-right: 35px;
+}
+
+
+.map-container {
+  height: 500px;
+  width: 100%;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
 }

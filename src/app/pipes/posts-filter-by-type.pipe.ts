@@ -16,8 +16,6 @@ export class PostsFilterByTypePipe implements PipeTransform {
     return items.filter((it: Post) => {
       const date = new Date(it.date_val).toDateString();
       const dateNow = new Date().toDateString();
-      console.log(new Date(date).getTime());
-      console.log(new Date(dateNow).getTime());
       switch (type) {
         case 'en-cours':
           return new Date(date).getTime() >= new Date(dateNow).getTime() &&
