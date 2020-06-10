@@ -30,6 +30,7 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit {
     {nom: 'Hôtellerie', img: '1496677265-2_84643.png'}
   ];
   showText = true;
+  period = 'en-cours';
 
   constructor(private apiservice: SessionService, private router: Router) {
     window.scrollTo(0, 0);

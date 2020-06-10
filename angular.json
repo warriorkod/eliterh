@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "EliteRhWeb": {
+    "eliterh": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/EliteRhWeb",
+            "outputPath": "dist/eliterh",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "EliteRhWeb:build"
+            "browserTarget": "eliterh:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "EliteRhWeb:build:production"
+              "browserTarget": "eliterh:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "EliteRhWeb:build"
+            "browserTarget": "eliterh:build"
           }
         },
         "test": {
@@ -121,18 +121,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "EliteRhWeb:serve"
+            "devServerTarget": "eliterh:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "EliteRhWeb:serve:production"
+              "devServerTarget": "eliterh:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "EliteRhWeb",
+  "defaultProject": "eliterh",
   "cli": {
     "analytics": "37198b93-6131-4c5b-ba58-87152bf545e9"
   }

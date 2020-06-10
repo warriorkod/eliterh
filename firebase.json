@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/EliteRhWeb",
+    "public": "dist/eliterh",
     "ignore": [
       "firebase.json",
       "**/.*",
