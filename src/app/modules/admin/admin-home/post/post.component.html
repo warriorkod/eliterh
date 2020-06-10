@@ -1,52 +1,56 @@
 <div class="content-all">
-    <div class="filter">
-        <label for="title"> Type de postes :
-          <select name="type" id="title" class="input" (change)="onTypeChange($event.target.value)">
-            <option value="">Tous les types</option>
-            <option value="en-cours">Postes en cours</option>
-            <option value="archives">Postes archivés</option>
-          </select>
-        </label>
-        <label for="structure"> Structure:
-            <input ngModel type="text" name="structure" id="structure" class="input" (keyup)="onStructureChange($event.target.value)" placeholder="Nom de l'entreprise">
-        </label>
-      <span class="list-length">
+  <div class="filter">
+    <label for="title"> Type de postes :
+      <select (change)="onTypeChange($event.target.value)" class="input" id="title" name="type">
+        <option value="">Tous les types</option>
+        <option value="en-cours">Postes en cours</option>
+        <option value="archives">Postes archivés</option>
+      </select>
+    </label>
+    <label for="structure"> Structure:
+      <input (keyup)="onStructureChange($event.target.value)" class="input" id="structure" name="structure" ngModel
+             placeholder="Nom de l'entreprise" type="text">
+    </label>
+    <span class="list-length">
         Total postes : {{posts.length}}
       </span>
-    </div>
-    <div class="content-body">
-        <ul class="list">
-            <!-- <li *ngFor="let post of post | paginate:{itemsPerPage: 8, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="openPost(post)">-->
-            <li *ngFor="let post of posts | postsFilterOrderByDate | postsFilterByType : type : structure | paginate:{itemsPerPage: 8, currentPage: p};let i = index " class="list-item" (click)="openPost(post)">
-                 <div>
-                    <div class="row">
-                        <h4 class="card-header">{{ post.structure_name }}</h4>
-                    </div>
-                    <div class="card-body">
-                        <p> {{ post.titre }}</p>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="column">
-                            <div class="lieu">
-                                {{ post.lieu}}
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="date">
-                                Crée le {{ post.date_create | date: 'dd MMM yyyy'}}
-                            </div> <br>
-                            <div class="date">
-                                valide jusqu'au {{ post.date_val | date: 'dd MMM yyyy'}}
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-            </li>
+  </div>
+  <div class="content-body">
+    <ul class="list">
+      <!-- <li *ngFor="let post of post | paginate:{itemsPerPage: 8, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="openPost(post)">-->
+      <li
+        (click)="openPost(post)"
+        *ngFor="let post of posts | postsFilterOrderByDate | postsFilterByType : type : structure | paginate:{itemsPerPage: 8, currentPage: p};let i = index " class="list-item">
+        <div>
+          <div class="row">
+            <h4 class="card-header">{{ post.structureName }}</h4>
+          </div>
+          <div class="card-body">
+            <p> {{ post.titre }}</p>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="column">
+              <div class="lieu">
+                {{ post.lieu}}
+              </div>
+            </div>
+            <div class="column">
+              <div class="date">
+                Crée le {{ post.dateCreate | date: 'dd MMM yyyy'}}
+              </div>
+              <br>
+              <div class="date">
+                valide jusqu'au {{ post.dateVal | date: 'dd MMM yyyy'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
 
-         </ul>
-    </div>
-    <div class="pagination">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
+    </ul>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>

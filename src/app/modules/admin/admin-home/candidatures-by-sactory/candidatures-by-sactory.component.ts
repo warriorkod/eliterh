@@ -5,7 +5,7 @@ import {SessionService} from 'src/app/services';
 import {Candidature} from '../../../../models/candidature';
 import {User} from '../../../../models/user';
 import {DataTableDirective} from 'angular-datatables';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-candidatures-by-sactory',
@@ -47,7 +47,7 @@ export class CandidaturesBySactoryComponent implements OnInit, OnDestroy, AfterV
             this.dtTrigger.next();
           });
         } else {
-          this.isDtInitialized = true
+          this.isDtInitialized = true;
           this.dtTrigger.next();
         }
       });
@@ -73,7 +73,7 @@ export class CandidaturesBySactoryComponent implements OnInit, OnDestroy, AfterV
           if (exists === -1) {
             const item = {
               id: this.posts[index].id,
-              nom_structure: this.posts[index].structure_name,
+              nom_structure: this.posts[index].structureName,
               title: this.posts[index].titre,
               secteur: this.posts[index].secteur,
             };
@@ -102,7 +102,7 @@ export class CandidaturesBySactoryComponent implements OnInit, OnDestroy, AfterV
           if (exists === -1) {
             const item = {
               id: this.posts[index].id,
-              nom_structure: this.posts[index].structure_name,
+              nom_structure: this.posts[index].structureName,
               title: this.posts[index].titre,
               secteur: this.posts[index].secteur,
             };

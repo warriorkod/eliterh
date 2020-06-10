@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { ContactRoutingModule } from './contact-routing.module';
-import { ContactComponent } from './contact.component';
-import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { environment } from 'src/environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { MarkerService } from '../../services/map-leaflet/marker.service';
-import { PopUpService } from '../../services/map-leaflet/pop-up.service';
-import { HttpClientModule } from '@angular/common/http';
+import {ContactRoutingModule} from './contact-routing.module';
+import {ContactComponent} from './contact.component';
+import {SharedModule} from '../shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {environment} from 'src/environments/environment';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {MarkerService} from '../../services/map-leaflet/marker.service';
+import {PopUpService} from '../../services/map-leaflet/pop-up.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [ContactComponent],
@@ -28,4 +28,5 @@ import { HttpClientModule } from '@angular/common/http';
     PopUpService
   ],
 })
-export class ContactModule { }
+export class ContactModule {
+}

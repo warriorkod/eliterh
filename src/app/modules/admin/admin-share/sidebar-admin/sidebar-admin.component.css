@@ -1,43 +1,45 @@
-.active{
-    background-color: black;
-    color: white;
-    font-weight: bold;
+.active {
+  background-color: black;
+  color: white;
+  font-weight: bold;
 }
-  /* Style the sidenav links and the dropdown button */
+
+/* Style the sidenav links and the dropdown button */
 .btn-link {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    display: block;
-    border: none;
-    width:100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
-.btn-link:hover{
+
+.btn-link:hover {
   background-color: black;
   color: white;
   font-weight: bold;
 }
-.btn-link:active{
+
+.btn-link:active {
   background-color: black;
   color: white;
   font-weight: bold;
 }
 
 
-  /* Optional: Style the caret down icon */
-  .fa-caret-down {
-    float: right;
-    padding-right: 8px;
-  }
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
 
 
-
-  .mark{
-    background-color: rgb(153, 141, 165);
-    width: 3px;
-    height: 100%;
-    margin-right: 10px;
-  }
+.mark {
+  background-color: rgb(153, 141, 165);
+  width: 3px;
+  height: 100%;
+  margin-right: 10px;
+}

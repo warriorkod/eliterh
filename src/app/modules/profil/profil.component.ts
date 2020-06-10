@@ -1,13 +1,11 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as firebase from 'firebase';
-import { SessionService } from 'src/app/services';
-import { User } from 'src/app/models/user';
+import {SessionService} from 'src/app/services';
+import {User} from 'src/app/models/user';
 import Swal from 'sweetalert2';
-import { SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
-import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {SwalComponent, SwalPortalTargets} from '@sweetalert2/ngx-sweetalert2';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -16,15 +14,14 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit, OnDestroy {
-  @ViewChild('subscribe', {static: true}) private subscribe: SwalComponent;
-  @ViewChild('updatePassword', {static: true}) private updatePassword: SwalComponent;
-
   user: User = new User();
   userInfo: FormGroup;
   updatePasswordForm: FormGroup;
   loading = true;
   usersSubscription: Subscription;
   errorMessage: string;
+  @ViewChild('subscribe', {static: true}) private subscribe: SwalComponent;
+  @ViewChild('updatePassword', {static: true}) private updatePassword: SwalComponent;
 
   constructor(private apiService: SessionService, public readonly swalTargets: SwalPortalTargets) {
     window.scrollTo(0, 0);
@@ -34,7 +31,7 @@ export class ProfilComponent implements OnInit, OnDestroy {
     firebase.auth().onAuthStateChanged(
       (user) => {
         if (user) {
-          this.usersSubscription = this.apiService.usersSubject.subscribe( () => {
+          this.usersSubscription = this.apiService.usersSubject.subscribe(() => {
             this.apiService.getSingleUser(user.email).then(
               (item: User) => {
                 if (item) {
@@ -67,14 +64,14 @@ export class ProfilComponent implements OnInit, OnDestroy {
       nom: new FormControl(this.user.nom ? this.user.nom : '', Validators.required),
       prenom: new FormControl(this.user.prenom ? this.user.prenom : '', Validators.required),
       tel: new FormControl(this.user.tel ? this.user.tel : '', Validators.required),
-      date_naissance: new FormControl(this.user.date_naissance ? this.user.date_naissance : '', Validators.required),
+      dateNaissance: new FormControl(this.user.dateNaissance ? this.user.dateNaissance : '', Validators.required),
       adresse: new FormControl(this.user.adresse ? this.user.adresse : '', Validators.required),
       lieu: new FormControl(this.user.lieu ? this.user.lieu : '', Validators.required),
       civilite: new FormControl(this.user.civilite ? this.user.civilite : '', Validators.required),
-      niveau_etude: new FormControl(this.user.niveau_etude ? this.user.niveau_etude : '', Validators.required),
-      niveau_experience: new FormControl(this.user.niveau_experience ? this.user.niveau_experience : '', Validators.required),
-      domaine_actuel: new FormControl(this.user.domaine_actuel ? this.user.domaine_actuel : '', Validators.required),
-      domaine_recherche: new FormControl(this.user.domaine_recherche ? this.user.domaine_recherche : '', Validators.required)
+      etudeLevel: new FormControl(this.user.etudeLevel ? this.user.etudeLevel : '', Validators.required),
+      experienceLevel: new FormControl(this.user.experienceLevel ? this.user.experienceLevel : '', Validators.required),
+      actualDomain: new FormControl(this.user.actualDomain ? this.user.actualDomain : '', Validators.required),
+      searchDomain: new FormControl(this.user.searchDomain ? this.user.searchDomain : '', Validators.required)
     });
   }
 
@@ -115,29 +112,29 @@ export class ProfilComponent implements OnInit, OnDestroy {
       this.errorMessage = 'Les mots de passe ne sont pas identiques';
       return;
     }
-    this.apiService.updatePassword(credentials).then( () => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Opération effectuée avec succès!',
-        showConfirmButton: false,
-        timer: 1500
+    this.apiService.updatePassword(credentials).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Opération effectuée avec succès!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      (error) => {
+        let message: string;
+        if (error.code === 'auth/wrong-password') {
+          message = 'Ancien mot de passe incorrecte!';
+        } else if (error.code === 'auth/weak-password') {
+          message = 'Le nouveau mot de passe doit contenir au moins 6 caractères!';
+        } else {
+          message = 'Une erreur est ssurvenue. Veuillez réessayer svp!';
+        }
+        Swal.fire(
+          'Oups!',
+          message,
+          'error'
+        );
       });
-    },
-    (error) => {
-      let message: string;
-      if (error.code === 'auth/wrong-password') {
-        message = 'Ancien mot de passe incorrecte!';
-      } else if (error.code === 'auth/weak-password') {
-        message = 'Le nouveau mot de passe doit contenir au moins 6 caractères!';
-      } else {
-        message = 'Une erreur est ssurvenue. Veuillez réessayer svp!';
-      }
-      Swal.fire(
-        'Oups!',
-        message,
-        'error'
-      );
-    });
   }
 
   clearInput() {

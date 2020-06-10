@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatDialog, MatDialogConfig} from '@angular/material';
-import { Router, RouterEvent, NavigationStart, NavigationEnd } from '@angular/router';
-import { SessionService } from 'src/app/services';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {NavigationEnd, Router, RouterEvent} from '@angular/router';
+import {SessionService} from 'src/app/services';
 import * as firebase from 'firebase';
 import Swal from 'sweetalert2';
-import { SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
-import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-declare var $ :any;
+import {SwalComponent, SwalPortalTargets} from '@sweetalert2/ngx-sweetalert2';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+
+declare var $: any;
 
 
 @Component({
@@ -16,9 +16,6 @@ declare var $ :any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('subscribe', {static: true}) private subscribe: SwalComponent;
-  @ViewChild('signin', {static: true}) private signin: SwalComponent;
-
   info: {
     'titre': string;
     'description': string;
@@ -38,13 +35,13 @@ export class HeaderComponent implements OnInit {
       description: 'Besoin d’élargir vos horizons sur le plan\n' +
         'professionnel ?\n' +
         'Vous avez tapé à la bonne porte',
-        img: '../../../../assets/images/front-image/banniere-about-min.jpg'
+      img: '../../../../assets/images/front-image/banniere-about-min.jpg'
     },
     service: {
       titre: 'Vous êtes une entreprise ?',
       description: 'Nous vous offrons des solutions RH sur mesure afin de répondre ' +
         'amplement à vos besoins concernant le placement permanent ou temporaire.',
-        img: '../../../../assets/images/front-image/banniere-service-min.jpg'
+      img: '../../../../assets/images/front-image/banniere-service-min.jpg'
     },
     contact: {
       titre: 'Vous avez  besoin de nos services ?',
@@ -60,14 +57,16 @@ export class HeaderComponent implements OnInit {
 
   };
   errorMessage: string;
+  @ViewChild('subscribe', {static: true}) private subscribe: SwalComponent;
+  @ViewChild('signin', {static: true}) private signin: SwalComponent;
 
-  public constructor(private dialog: MatDialog,  private router: Router, private apiservice: SessionService,
+  public constructor(private dialog: MatDialog, private router: Router, private apiservice: SessionService,
                      public readonly swalTargets: SwalPortalTargets
-    ) {
-      this.router.events.subscribe((event: RouterEvent) => {
-        this.navigationInterceptor(event);
-      });
-    }
+  ) {
+    this.router.events.subscribe((event: RouterEvent) => {
+      this.navigationInterceptor(event);
+    });
+  }
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(
@@ -153,31 +152,31 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin(formValue) {
-    this.apiservice.signInUser(formValue).then( () => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Bienvenue.',
-        showConfirmButton: false,
-        timer: 1500
+    this.apiservice.signInUser(formValue).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenue.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      (error) => {
+        let message: string;
+        if (error.code === 'auth/user-not-found') {
+          message = 'Adresse Email invalide!';
+        } else if (error.code === 'auth/wrong-password') {
+          message = 'Mot de passe incorrecte!';
+        } else if (error.code === 'userNotActived') {
+          message = 'Votre compte a été désactivé. Veuillez contacter l\'administrateur!';
+        } else {
+          message = 'Une erreur est ssurvenue. Veuillez réessayer svp!';
+        }
+        Swal.fire(
+          'Oups!',
+          message,
+          'error'
+        );
       });
-    },
-    (error) => {
-      let message: string;
-      if (error.code === 'auth/user-not-found') {
-        message = 'Adresse Email invalide!';
-      } else if (error.code === 'auth/wrong-password') {
-        message = 'Mot de passe incorrecte!';
-      } else if (error.code === 'userNotActived') {
-        message = 'Votre compte a été désactivé. Veuillez contacter l\'administrateur!';
-      } else {
-        message = 'Une erreur est ssurvenue. Veuillez réessayer svp!';
-      }
-      Swal.fire(
-        'Oups!',
-        message,
-        'error'
-      );
-    });
   }
 
   signup() {
@@ -189,49 +188,49 @@ export class HeaderComponent implements OnInit {
       this.errorMessage = 'Les mots de passe ne sont pas identiques';
       return;
     }
-    this.apiservice.createNewUser(formValue).then( () => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Compte créé avec succès.',
-        showConfirmButton: false,
-        timer: 1500
+    this.apiservice.createNewUser(formValue).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Compte créé avec succès.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      (error) => {
+        let message: string;
+        if (error.code === 'auth/email-already-in-use') {
+          message = 'L\'adresse e-mail est déjà utilisée par un autre compte!';
+        } else if (error.code === 'auth/weak-password') {
+          message = 'Le mot de passe doit contenir au moins 6 caractères!';
+        } else {
+          message = 'Une erreur est ssurvenue. Veuillez réessayer svp!';
+        }
+        Swal.fire(
+          'Oups!',
+          message,
+          'error'
+        );
       });
-    },
-    (error) => {
-      let message: string;
-      if (error.code === 'auth/email-already-in-use') {
-        message = 'L\'adresse e-mail est déjà utilisée par un autre compte!';
-      } else if (error.code === 'auth/weak-password') {
-        message = 'Le mot de passe doit contenir au moins 6 caractères!';
-      } else {
-        message = 'Une erreur est ssurvenue. Veuillez réessayer svp!';
-      }
-      Swal.fire(
-        'Oups!',
-        message,
-        'error'
-      );
-    });
   }
 
   signout() {
-    this.apiservice.signOutUser().then( () => {
-      this.router.navigate(['sign_in']);
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'A très bientôt.',
-        showConfirmButton: false,
-        timer: 1500
+    this.apiservice.signOutUser().then(() => {
+        this.router.navigate(['sign_in']);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'A très bientôt.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      (error) => {
+        Swal.fire(
+          'Oups!',
+          'Une erreur est survenue.',
+          'error'
+        );
       });
-    },
-    (error) => {
-      Swal.fire(
-        'Oups!',
-        'Une erreur est survenue.',
-        'error'
-      );
-    });
   }
 
   closeSignin() {

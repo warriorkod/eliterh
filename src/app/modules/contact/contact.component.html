@@ -1,65 +1,70 @@
 <app-header></app-header>
 <!-- Map Area Starts -->
 <section class="map-area section-padding">
-<div class="container">
+  <div class="container">
     <div class="map-container">
       <div class="map-frame">
         <div id="map"></div>
       </div>
     </div>
-</div>
+  </div>
 </section>
 <!-- Map Area End -->
 
 
 <!-- Contact Form Starts -->
 <section class="contact-form section-padding3">
-<div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col-lg-3 mb-5 mb-lg-0">
-          <div class="d-flex">
-            <div class="into-icon">
-                <i class="fa fa-home"></i>
-            </div>
-            <div class="info-text">
-                <h4>Dakar, Sénégal</h4>
-                <p>239 Cité Keur Damel</p>
-            </div>
+      <div class="col-lg-3 mb-5 mb-lg-0">
+        <div class="d-flex">
+          <div class="into-icon">
+            <i class="fa fa-home"></i>
           </div>
-          <div class="d-flex">
-            <div class="into-icon">
-                <i class="fa fa-phone"></i>
-            </div>
-            <div class="info-text">
-                <h4>+221 76 460 16 16</h4>
-                <p>Horaire: 8H-17H</p>
-            </div>
-          </div>
-          <div class="d-flex">
-            <div class="into-icon">
-                <i class="fa fa-envelope-o"></i>
-            </div>
-            <div class="info-text">
-                <h4 class="h-transform">info.eliterh@gmail.com</h4>
-                <p>Disponible 24H/24!</p>
-            </div>
+          <div class="info-text">
+            <h4>Dakar, Sénégal</h4>
+            <p>239 Cité Keur Damel</p>
           </div>
         </div>
-        <div class="col-lg-9">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="left">
-                    <input formControlName="name" type="text" placeholder="Saisissez votre nom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre nom'" required>
-                    <input formControlName="email" type="email" placeholder="Saisissez votre email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre email'" required>
-                    <input formControlName="subject" type="text" placeholder="Saisissez l'objet de votre email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'objet de votre email'" required>
-                </div>
-                <div class="right">
-                    <textarea formControlName="message" cols="20" rows="7"  placeholder="Saisissez votre message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre message'" required></textarea>
-                </div>
-                <button [disabled]="form.invalid" type="submit" class="template-btn">Envoyer maintenant</button>
-            </form>
+        <div class="d-flex">
+          <div class="into-icon">
+            <i class="fa fa-phone"></i>
+          </div>
+          <div class="info-text">
+            <h4>+221 76 460 16 16</h4>
+            <p>Horaire: 8H-17H</p>
+          </div>
         </div>
+        <div class="d-flex">
+          <div class="into-icon">
+            <i class="fa fa-envelope-o"></i>
+          </div>
+          <div class="info-text">
+            <h4 class="h-transform">info.eliterh@gmail.com</h4>
+            <p>Disponible 24H/24!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+          <div class="left">
+            <input formControlName="name" onblur="this.placeholder = 'Saisissez votre nom'" onfocus="this.placeholder = ''" placeholder="Saisissez votre nom"
+                   required type="text">
+            <input formControlName="email" onblur="this.placeholder = 'Saisissez votre email'" onfocus="this.placeholder = ''"
+                   placeholder="Saisissez votre email" required type="email">
+            <input formControlName="subject" onblur="this.placeholder = 'objet de votre email'" onfocus="this.placeholder = ''"
+                   placeholder="Saisissez l'objet de votre email" required type="text">
+          </div>
+          <div class="right">
+            <textarea cols="20" formControlName="message" onblur="this.placeholder = 'Saisissez votre message'" onfocus="this.placeholder = ''"
+                      placeholder="Saisissez votre message" required
+                      rows="7"></textarea>
+          </div>
+          <button [disabled]="form.invalid" class="template-btn" type="submit">Envoyer maintenant</button>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 </section>
 <!-- Contact Form End -->
 <app-footer></app-footer>

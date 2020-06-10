@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SingleJobComponent } from './single-job.component';
+import {SingleJobComponent} from './single-job.component';
 
 describe('SingleJobComponent', () => {
   let component: SingleJobComponent;
@@ -8,9 +8,9 @@ describe('SingleJobComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleJobComponent ]
+      declarations: [SingleJobComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

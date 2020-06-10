@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Post } from 'src/app/models/post';
-import { SessionService } from 'src/app/services';
-import { Router } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {Post} from 'src/app/models/post';
+import {SessionService} from 'src/app/services';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -17,16 +17,17 @@ export class PostComponent implements OnInit, OnDestroy {
   type: string;
   structure: string;
 
-  constructor( private apiservice: SessionService, private router: Router) { }
+  constructor(private apiservice: SessionService, private router: Router) {
+  }
 
   ngOnInit() {
-      this.postsSubscription = this.apiservice.postsSubject.subscribe(
-        (posts: Post[]) => {
-          this.posts = posts;
-          this.postsFirst = posts;
-        }
-      );
-      this.apiservice.emitPosts();
+    this.postsSubscription = this.apiservice.postsSubject.subscribe(
+      (posts: Post[]) => {
+        this.posts = posts;
+        this.postsFirst = posts;
+      }
+    );
+    this.apiservice.emitPosts();
   }
 
 

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import { MatDialogRef } from '@angular/material';
-import { SessionService } from 'src/app/services';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef} from '@angular/material';
+import {SessionService} from 'src/app/services';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +11,10 @@ import { SessionService } from 'src/app/services';
 export class RegisterComponent implements OnInit {
   register: FormGroup;
 
-  constructor(private dialogRef: MatDialogRef<RegisterComponent>, private _apiService: SessionService) { }
+  constructor(private dialogRef: MatDialogRef<RegisterComponent>, private apiService: SessionService) {
+  }
 
- 
+
   ngOnInit() {
     this.buildRegisterForm();
 
@@ -32,13 +33,13 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser(formValue) {
-    this._apiService.createNewUser(formValue);
+    this.apiService.createNewUser(formValue).then();
 
   }
 
   close() {
     this.dialogRef.close();
-  } 
+  }
 
 
 }

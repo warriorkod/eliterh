@@ -1,165 +1,179 @@
-
 <div class="blog-top">
-    <div class="top_menu row m-0">
-        <div class="container">
-            <div class="float-left">
-                <ul class="list header_social">
-                    <li><a target="_blank" href="https://web.facebook.com/Elite-RH-103531941059330"><i class="fa fa-facebook"></i></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/elite-rh-a01893195/"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-            <div class="float-right">
-                <a class="dn_btn" href="tel:+221 76 460 16 16">+221 76 460 16 16</a>
-                <a class="dn_btn" href="info.eliterh@gmail.com">info.eliterh@gmail.com</a>
-            </div>
-        </div>
+  <div class="top_menu row m-0">
+    <div class="container">
+      <div class="float-left">
+        <ul class="list header_social">
+          <li><a href="https://web.facebook.com/Elite-RH-103531941059330" target="_blank"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li><a href="https://www.linkedin.com/in/elite-rh-a01893195/" target="_blank"><i
+            class="fa fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+      <div class="float-right">
+        <a class="dn_btn" href="tel:+221 76 460 16 16">+221 76 460 16 16</a>
+        <a class="dn_btn" href="info.eliterh@gmail.com">info.eliterh@gmail.com</a>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Header Area Starts -->
-<header class="header-area main-header" *ngIf="main">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="logo-area">
-                    <img routerLink="/sign_in" src="../../../../assets/images/logo/ELITE%20RH%20HD.jpg" class="logoelite" alt="">
-                    <!--<a routerLink="/sign_in" href="#"><span>Elite RH</span></a>-->
-                </div>
-            </div>
-            <div class="col-lg-10">
-                <div class="custom-navbar" (click)="open_nav()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="main-menu">
-                    <ul>
-                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/sign_in')}" routerLink="/sign_in" href="#">accueil</a></li>
-                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/about')}" routerLink="/about" href="#">A propos de nous</a></li>
-                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/service')}" routerLink="/service" href="#">Nos services</a></li>
-                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/job')}" routerLink="/job" href="#">Offres d'emploi</a></li>
-                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/contact')}" routerLink="/contact" href="#">contact</a></li>
-                        <li class="menu-btn" *ngIf="!isAuth">
-                            <a (click)="getLogin()" class="login">Se connecter</a>
-                            <a (click)="signup()" class="login">S'inscrire</a>
-                        </li>
-                        <li *ngIf="isAuth"><a [ngClass]="{'main-menu-active': getCurrentLink('/profil')}" routerLink="/profil" href="#">Profil</a></li>
-                        <li class="menu-btn" *ngIf="isAuth">
-                            <a (click)="signout()" class="login">Se déconnecter</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<header *ngIf="main" class="header-area main-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="logo-area">
+          <img alt="" class="logoelite" routerLink="/sign_in" src="../../../../assets/images/logo/ELITE%20RH%20HD.jpg">
+          <!--<a routerLink="/sign_in" href="#"><span>Elite RH</span></a>-->
         </div>
+      </div>
+      <div class="col-lg-10">
+        <div (click)="open_nav()" class="custom-navbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="main-menu">
+          <ul>
+            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/sign_in')}" href="#"
+                   routerLink="/sign_in">accueil</a></li>
+            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/about')}" href="#" routerLink="/about">A propos de
+              nous</a></li>
+            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/service')}" href="#" routerLink="/service">Nos
+              services</a></li>
+            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/job')}" href="#" routerLink="/job">Offres
+              d'emploi</a></li>
+            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/contact')}" href="#"
+                   routerLink="/contact">contact</a></li>
+            <li *ngIf="!isAuth" class="menu-btn">
+              <a (click)="getLogin()" class="login">Se connecter</a>
+              <a (click)="signup()" class="login">S'inscrire</a>
+            </li>
+            <li *ngIf="isAuth"><a [ngClass]="{'main-menu-active': getCurrentLink('/profil')}" href="#"
+                                  routerLink="/profil">Profil</a></li>
+            <li *ngIf="isAuth" class="menu-btn">
+              <a (click)="signout()" class="login">Se déconnecter</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 </header>
 <!-- Header Area End -->
 
 <!-- Header Area Starts -->
-<header class="header-area single-page" *ngIf="!main" [ngStyle]="{'background-image':'url(' + info.img + ')'}">
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="logo-area logo-area-bis">
-                        <a routerLink="/sign_in" href="#"><span>Elite RH</span></a>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="custom-navbar" (click)="open_nav()">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="main-menu main-menu-light">
-                        <ul>
-                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/sign_in')}" routerLink="/sign_in" href="#">accueil</a></li>
-                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/about')}" routerLink="/about" href="#">A propos de nous</a></li>
-                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/service')}" routerLink="/service" href="#">Nos services</a></li>
-                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/job')}" routerLink="/job" href="#">Offres d'emploi</a></li>
-                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/contact')}" routerLink="/contact" href="#">contact</a></li>
-                            <li class="menu-btn" *ngIf="!isAuth">
-                                <a (click)="getLogin()" class="login">Se connecter</a>
-                                <a (click)="signup()" class="login">S'inscrire</a>
-                            </li>
-                            <li *ngIf="isAuth"><a [ngClass]="{'main-menu-active': getCurrentLink('/profil')}" routerLink="/profil" href="#">Profil</a></li>
-                            <li class="menu-btn" *ngIf="isAuth">
-                                <a (click)="signout()" class="login">Se déconnecter</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<header *ngIf="!main" [ngStyle]="{'background-image':'url(' + info.img + ')'}" class="header-area single-page">
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="logo-area logo-area-bis">
+            <a href="#" routerLink="/sign_in"><span>Elite RH</span></a>
+          </div>
         </div>
-    </div>
-    <div class="page-title text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h2>{{info.titre}}</h2>
-                    <p>{{info.description}}</p>
-                </div>
-            </div>
+        <div class="col-lg-9">
+          <div (click)="open_nav()" class="custom-navbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="main-menu main-menu-light">
+            <ul>
+              <li><a [ngClass]="{'main-menu-active': getCurrentLink('/sign_in')}" href="#"
+                     routerLink="/sign_in">accueil</a></li>
+              <li><a [ngClass]="{'main-menu-active': getCurrentLink('/about')}" href="#" routerLink="/about">A propos de
+                nous</a></li>
+              <li><a [ngClass]="{'main-menu-active': getCurrentLink('/service')}" href="#" routerLink="/service">Nos
+                services</a></li>
+              <li><a [ngClass]="{'main-menu-active': getCurrentLink('/job')}" href="#" routerLink="/job">Offres
+                d'emploi</a></li>
+              <li><a [ngClass]="{'main-menu-active': getCurrentLink('/contact')}" href="#"
+                     routerLink="/contact">contact</a></li>
+              <li *ngIf="!isAuth" class="menu-btn">
+                <a (click)="getLogin()" class="login">Se connecter</a>
+                <a (click)="signup()" class="login">S'inscrire</a>
+              </li>
+              <li *ngIf="isAuth"><a [ngClass]="{'main-menu-active': getCurrentLink('/profil')}" href="#"
+                                    routerLink="/profil">Profil</a></li>
+              <li *ngIf="isAuth" class="menu-btn">
+                <a (click)="signout()" class="login">Se déconnecter</a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="page-title text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2>{{info.titre}}</h2>
+          <p>{{info.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 <!-- Header Area End -->
 
-<swal #subscribe title="Créer un compte"   icon="info"  [showConfirmButton]= false>
-    <!-- This form will be displayed as the alert main content
-         Targets the alert's main content zone by default -->
-        <form *swalPortal [formGroup]="register"  (ngSubmit)="createUser(register.value)">
-            <mat-dialog-content >
-                <!-- Form fields -->
-                <mat-form-field>
-                    <input  matInput  placeholder="Prenom" type="text" formControlName="prenom"  required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput  placeholder="Nom" type="text" formControlName="nom"  required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput  placeholder="Téléphone" type="tel" formControlName="tel"  required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput (click)="clearInput()"  placeholder="Confirmation mot de passe"  type="password"  formControlName="password_confirm"  required>
-                    <span class="dark_error" *ngIf='errorMessage'>{{errorMessage}}</span>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput  placeholder="Date de naissance" type="date" formControlName="date_naissance"  required>
-                </mat-form-field>
-            </mat-dialog-content>
-            <mat-dialog-actions>
-                <button [disabled]="register.invalid" class="mat-raised-button mat-primary" type="submit">Créer</button>
-            </mat-dialog-actions>
-        </form>
-        <ng-container *swalPortal="swalTargets.cancelButton">
-            Fermer
-        </ng-container>
+<swal #subscribe [showConfirmButton]=false icon="info" title="Créer un compte">
+  <!-- This form will be displayed as the alert main content
+       Targets the alert's main content zone by default -->
+  <form (ngSubmit)="createUser(register.value)" *swalPortal [formGroup]="register">
+    <mat-dialog-content>
+      <!-- Form fields -->
+      <mat-form-field>
+        <input formControlName="prenom" matInput placeholder="Prenom" required type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="nom" matInput placeholder="Nom" required type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="Adresse email" required type="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="tel" matInput placeholder="Téléphone" required type="tel">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" matInput placeholder="Mot de passe" required type="password">
+      </mat-form-field>
+      <mat-form-field>
+        <input (click)="clearInput()" formControlName="password_confirm" matInput placeholder="Confirmation mot de passe"
+               required type="password">
+        <span *ngIf='errorMessage' class="dark_error">{{errorMessage}}</span>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="dateNaissance" matInput placeholder="Date de naissance" required type="date">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button [disabled]="register.invalid" class="mat-raised-button mat-primary" type="submit">Créer</button>
+    </mat-dialog-actions>
+  </form>
+  <ng-container *swalPortal="swalTargets.cancelButton">
+    Fermer
+  </ng-container>
 </swal>
 
-  <swal #signin title="Se connecter"   icon="info"  [showConfirmButton]= false>
-    <!-- This form will be displayed as the alert main content
-         Targets the alert's main content zone by default -->
-        <form *swalPortal [formGroup]="login"  (ngSubmit)="onLogin(login.value)">
-            <mat-dialog-content >
-                <!-- Form fields -->
-                <mat-form-field>
-                    <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
-                </mat-form-field>
-            </mat-dialog-content>
-            <mat-dialog-actions>
-                <button [disabled]="login.invalid" class="mat-raised-button mat-primary" type="submit">Se connecter</button>
-            </mat-dialog-actions>
-        </form>
-        <ng-container *swalPortal="swalTargets.cancelButton">
-            Fermer
-        </ng-container>
-  </swal>
+<swal #signin [showConfirmButton]=false icon="info" title="Se connecter">
+  <!-- This form will be displayed as the alert main content
+       Targets the alert's main content zone by default -->
+  <form (ngSubmit)="onLogin(login.value)" *swalPortal [formGroup]="login">
+    <mat-dialog-content>
+      <!-- Form fields -->
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="Adresse email" required type="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" matInput placeholder="Mot de passe" required type="password">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button [disabled]="login.invalid" class="mat-raised-button mat-primary" type="submit">Se connecter</button>
+    </mat-dialog-actions>
+  </form>
+  <ng-container *swalPortal="swalTargets.cancelButton">
+    Fermer
+  </ng-container>
+</swal>

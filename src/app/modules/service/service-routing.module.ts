@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {ContactComponent} from "../contact/contact.component";
-import {ServiceComponent} from "./service.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ServiceComponent} from './service.component';
 
 
 const routes: Routes = [
@@ -10,8 +9,10 @@ const routes: Routes = [
     component: ServiceComponent
   }
 ];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ServiceRoutingModule { }
+export class ServiceRoutingModule {
+}

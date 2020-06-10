@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Candidature} from 'src/app/models/candidature';
 import {SessionService} from 'src/app/services';
@@ -36,7 +36,6 @@ export class CandidaturesComponent implements OnInit, OnDestroy {
                   this.candidatures[i] = {...candidatures[i], ...postEL};
                   this.candidatures[i].isActive = false;
                   this.candidatures[i].label = 'Ouvrir';
-                  console.log(this.candidatures[i]);
                 }
               }
             );

@@ -1,79 +1,85 @@
 <!-- Job Single Content Start -->
 <section class="job-single-content section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="jobs-tab tab-item">
-                    <ul>
-                        <li (click)="addCurrenType('', -1)" class="li-active">Tous les types</li>
-                        <li  *ngFor="let type of types; let i=index" (click)="addCurrenType(type, i)" class="li-active">{{type}}</li>
-                    </ul>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="jobs-tab tab-item">
+          <ul>
+            <li (click)="addCurrenType('', -1)" class="li-active">Tous les types</li>
+            <li (click)="addCurrenType(type, i)" *ngFor="let type of types; let i=index" class="li-active">{{type}}</li>
+          </ul>
         </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="main-content">
-                    <div class="single-content1">
-                      <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | locationFilter : currentRegion | typeJobFilter : currenType | secteurFilter : currentSecteur | lazyFilter : size; let i = index">
-                            <div class="job-text">
-                                <h4>{{post.titre}}</h4>
-                                <ul class="mt-4">
-                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
-                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
-                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
-                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
-                                </ul>
-                            </div>
-                            <div class="job-btn align-self-center">
-                                <a class="forth-btn">{{post.type}}</a>
-                                <img src="assets/images/logo/ELITE%20RH%20HD.png" alt="job">
-                            </div>
-                      </div>
-                      <div class="errorPostVide single-job mb-4 d-lg-flex justify-content-between" *ngIf="postsToFetch === 0">
-                        <h1>Désolé!</h1><br>
-                        <p>Aucun résultat pour cette recherche.</p>
-                      </div>
-                    </div>
-                </div>
-                <div *ngIf="postsToFetch - size > 0" class="more-job-btn mt-5 text-center">
-                    <a (click)="getMorePost()" class="template-btn">Voir plus </a>
-                </div>
-                <!--
-                <div *ngIf="postsToFetch  - size > 5" class="more-job-btn mt-5 text-center">
-                  <a (click)="getFewerPost()" class="template-btn">Voir moins</a>
-                </div>
-                -->
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar mt-5 mt-lg-0">
-                    <div class="single-item mb-4">
-                        <h4 class="mb-4">Emplois par secteur</h4>
-                        <a href="javascript:void(0);" (click)="addCurrentSecteur('', -1)" class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn">
-                            <span>Tous les secteurs</span>
-                            <span class="text-right">{{getPostStat()}} job</span>
-                        </a>
-                        <a href="javascript:void(0);" *ngFor="let secteur of secteurs; let i=index" (click)="addCurrentSecteur(secteur, i)" class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn">
-                            <span>{{secteur}}</span>
-                            <span class="text-right">{{getPostStat(secteur)}} job</span>
-                        </a>
-                    </div>
-                    <div class="single-item mb-4">
-                        <h4 class="mb-4">Emplois par régions</h4>
-                        <a href="javascript:void(0);" (click)="addCurrentRegion('',-1)" class="sidebar-btn d-flex justify-content-between mb-3 side-btn">
-                            <span>Toutes les régions</span>
-                            <span class="text-right">{{getPostStat()}} job</span>
-                        </a>
-                        <a href="javascript:void(0);" *ngFor="let region of regions; let i=index" (click)="addCurrentRegion(region, i)" class="sidebar-btn d-flex justify-content-between mb-3 side-btn">
-                            <span>{{region}}</span>
-                            <span class="text-right">{{getPostStat(region)}} job</span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="main-content">
+          <div class="single-content1">
+            <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | locationFilter : currentRegion | typeJobFilter : currenType | secteurFilter : currentSecteur | lazyFilter : size; let i = index"
+                 class="single-job mb-4 d-lg-flex justify-content-between">
+              <div class="job-text">
+                <h4>{{post.titre}}</h4>
+                <ul class="mt-4">
+                  <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                  <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.dateCreate}}</h5></li>
+                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.dateVal}}</h5></li>
+                </ul>
+              </div>
+              <div class="job-btn align-self-center">
+                <a class="forth-btn">{{post.type}}</a>
+                <img alt="job" src="assets/images/logo/ELITE%20RH%20HD.png">
+              </div>
+            </div>
+            <div *ngIf="postsToFetch === 0" class="errorPostVide single-job mb-4 d-lg-flex justify-content-between">
+              <h1>Désolé!</h1><br>
+              <p>Aucun résultat pour cette recherche.</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="postsToFetch - size > 0" class="more-job-btn mt-5 text-center">
+          <a (click)="getMorePost()" class="template-btn">Voir plus </a>
+        </div>
+        <!--
+        <div *ngIf="postsToFetch  - size > 5" class="more-job-btn mt-5 text-center">
+          <a (click)="getFewerPost()" class="template-btn">Voir moins</a>
+        </div>
+        -->
+      </div>
+      <div class="col-lg-4">
+        <div class="sidebar mt-5 mt-lg-0">
+          <div class="single-item mb-4">
+            <h4 class="mb-4">Emplois par secteur</h4>
+            <a (click)="addCurrentSecteur('', -1)" class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn"
+               href="javascript:void(0);">
+              <span>Tous les secteurs</span>
+              <span class="text-right">{{getPostStat()}} job</span>
+            </a>
+            <a (click)="addCurrentSecteur(secteur, i)" *ngFor="let secteur of secteurs; let i=index"
+               class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn"
+               href="javascript:void(0);">
+              <span>{{secteur}}</span>
+              <span class="text-right">{{getPostStat(secteur)}} job</span>
+            </a>
+          </div>
+          <div class="single-item mb-4">
+            <h4 class="mb-4">Emplois par régions</h4>
+            <a (click)="addCurrentRegion('',-1)" class="sidebar-btn d-flex justify-content-between mb-3 side-btn"
+               href="javascript:void(0);">
+              <span>Toutes les régions</span>
+              <span class="text-right">{{getPostStat()}} job</span>
+            </a>
+            <a (click)="addCurrentRegion(region, i)" *ngFor="let region of regions; let i=index"
+               class="sidebar-btn d-flex justify-content-between mb-3 side-btn" href="javascript:void(0);">
+              <span>{{region}}</span>
+              <span class="text-right">{{getPostStat(region)}} job</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Job Single Content End -->
 <app-scroll-top></app-scroll-top>

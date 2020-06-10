@@ -1,4 +1,4 @@
-import { PostsFilterOrderByDatePipe } from './posts-filter-order-by-date.pipe';
+import {PostsFilterOrderByDatePipe} from './posts-filter-order-by-date.pipe';
 
 describe('PostsFilterOrderByDatePipe', () => {
   it('create an instance', () => {

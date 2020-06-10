@@ -1,10 +1,8 @@
-
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
-import { Post } from '../models/post';
-import { User } from '../models/user';
-import { Candidature } from '../models/candidature';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
+import {Post} from '../models/post';
+import {User} from '../models/user';
+import {Candidature} from '../models/candidature';
 import * as firebase from 'firebase';
 import Datasnapshot = firebase.database.DataSnapshot;
 
@@ -21,8 +19,6 @@ export class SessionService {
   itemsLengthSubject = new Subject<number>();
   candidaruresByFactory = [];
   candidaruresByFactorySubject = new Subject<any>();
-
-
 
 
   constructor() {
@@ -42,9 +38,11 @@ export class SessionService {
   emitUsers() {
     this.usersSubject.next(this.users);
   }
+
   emitCandidatures() {
     this.candidaturesSubject.next(this.candidatures);
   }
+
   emitCandidaturesByFactory() {
     this.candidaruresByFactorySubject.next(this.candidaruresByFactory);
   }
@@ -55,20 +53,21 @@ export class SessionService {
     this.savePosts();
     this.emitPosts();
   }
+
   // create a new post
   createNewCandidature(candidature) {
     this.candidatures.push(candidature);
     this.emitCandidatures();
     return new Promise(
       (resolve, reject) => {
-        this.saveCandidatures().then( () => {
-        // Sign-out successful.
-        resolve();
-      },
-      (error) => {
-        reject(error);
+        this.saveCandidatures().then(() => {
+            // Sign-out successful.
+            resolve();
+          },
+          (error) => {
+            reject(error);
+          });
       });
-    });
   }
 
   // save a post
@@ -95,21 +94,21 @@ export class SessionService {
     );
   }
 
-   // get list of users
-   getAllUsers() {
+  // get list of users
+  getAllUsers() {
     firebase.database().ref('/users').on('value', (data: Datasnapshot) => {
       this.users = data.val() ? data.val() : [];
       this.emitUsers();
     });
   }
 
-    // get list of users
-    getAllCandidatures() {
-      firebase.database().ref('/candidatures').on('value', (data: Datasnapshot) => {
-        this.candidatures = data.val() ? data.val() : [];
-        this.emitCandidatures();
-      });
-    }
+  // get list of users
+  getAllCandidatures() {
+    firebase.database().ref('/candidatures').on('value', (data: Datasnapshot) => {
+      this.candidatures = data.val() ? data.val() : [];
+      this.emitCandidatures();
+    });
+  }
 
   // update a post
   updatePost(post: Post) {
@@ -125,19 +124,19 @@ export class SessionService {
     this.emitPosts();
   }
 
-    // update a user
-    updateUser(user: User) {
-      const userIndexToUpdate = this.users.findIndex(
-        (userEl) => {
-          if (userEl.email === user.email) {
-            return true;
-          }
+  // update a user
+  updateUser(user: User) {
+    const userIndexToUpdate = this.users.findIndex(
+      (userEl) => {
+        if (userEl.email === user.email) {
+          return true;
         }
-      );
-      this.users[userIndexToUpdate] = user;
-      this.saveUsers();
-      this.emitUsers();
-    }
+      }
+    );
+    this.users[userIndexToUpdate] = user;
+    this.saveUsers();
+    this.emitUsers();
+  }
 
   // remove a post
   removePosts(post: Post) {
@@ -153,11 +152,12 @@ export class SessionService {
       if (this.candidatures[i].id === post.id) {
         this.candidatures.splice(i, 1);
       }
-    };
+    }
+
     this.savePosts();
     this.emitPosts();
     this.saveCandidatures().then();
-    this.emitCandidatures()
+    this.emitCandidatures();
   }
 
   // get a single post
@@ -199,14 +199,14 @@ export class SessionService {
 
   // get post by factory
   getPostsByFactory() {
-    this.candidatures.forEach( value => {
-      const index = this.posts.findIndex( (post) => {
+    this.candidatures.forEach(value => {
+      const index = this.posts.findIndex((post) => {
         if (post.id === value.id) {
           return true;
         }
       });
       if (index !== -1) {
-        const exists = this.candidaruresByFactory.findIndex( el => {
+        const exists = this.candidaruresByFactory.findIndex(el => {
           if (el.id === index) {
             return true;
           }
@@ -214,7 +214,7 @@ export class SessionService {
         if (exists === -1) {
           const item = {
             id: this.posts[index].id,
-            nom_structure: this.posts[index].structure_name,
+            nom_structure: this.posts[index].structureName,
             title: this.posts[index].titre,
             secteur: this.posts[index].secteur,
           };
@@ -327,13 +327,13 @@ export class SessionService {
     localStorage.clear();
     return new Promise(
       (resolve, reject) => {
-        firebase.auth().signOut().then( () => {
-          resolve();
-        },
-        (error) => {
-          reject(error);
-        });
-    });
+        firebase.auth().signOut().then(() => {
+            resolve();
+          },
+          (error) => {
+            reject(error);
+          });
+      });
   }
 
   updatePassword(data) {
@@ -345,15 +345,15 @@ export class SessionService {
       (resolve, reject) => {
         cpUser.reauthenticateWithCredential(credentials).then(
           () => {
-            cpUser.updatePassword(data.new_password).then( () => {
+            cpUser.updatePassword(data.new_password).then(() => {
               resolve();
-            }).catch( (error) => {
+            }).catch((error) => {
               reject(error);
             });
-        }, (error) => {
-          reject(error);
-        });
-    });
+          }, (error) => {
+            reject(error);
+          });
+      });
 
   }
 

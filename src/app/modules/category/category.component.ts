@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router, RouterEvent} from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   navigationInterceptor(event: RouterEvent) {
     if (event instanceof NavigationEnd) {
       if (event.url.includes('/list-job')) {
-          this.show = true;
+        this.show = true;
       } else if (event.url.includes('/single-job')) {
         this.show = false;
       }

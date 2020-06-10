@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoadingScreenService {
 
+  loadingStatus = new Subject();
+
   // tslint:disable-next-line:variable-name
   private _loading = false;
-  loadingStatus = new Subject();
 
   get loading(): boolean {
     return this._loading;

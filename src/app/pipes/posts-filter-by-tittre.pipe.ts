@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Post } from '../models/post';
+import {Pipe, PipeTransform} from '@angular/core';
+import {Post} from '../models/post';
 
 @Pipe({
   name: 'postsFilterByTittre'
@@ -7,11 +7,15 @@ import { Post } from '../models/post';
 export class PostsFilterByTittrePipe implements PipeTransform {
 
   transform(items: [], structure: string): any {
-    if (!items) { return []; }
-    if (!structure) { return items; }
+    if (!items) {
+      return [];
+    }
+    if (!structure) {
+      return items;
+    }
     structure = structure.toLowerCase();
-    return items.filter ((it: Post) => {
-        return (it.structure_name.toLowerCase().includes(structure));
+    return items.filter((it: Post) => {
+      return (it.structureName.toLowerCase().includes(structure));
     });
   }
 

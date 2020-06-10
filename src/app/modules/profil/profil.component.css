@@ -1,43 +1,42 @@
-mat-form-field{
-    width: 100%;
-    padding: 1%;
+mat-form-field {
+  width: 100%;
+  padding: 1%;
 }
 
-.mat-raised-button{
-    width: 30%;
-    height: 50px;
-    align-items: center;
+.mat-raised-button {
+  width: 30%;
+  height: 50px;
+  align-items: center;
 }
-
 
 
 mat-select {
-    z-index: 9999 !important;
+  z-index: 9999 !important;
 }
 
-.job-btn a:hover{
+.job-btn a:hover {
   color: wheat;
 }
 
-form{
+form {
   font-size: 20px;
   color: #1a393b;
 }
 
-.job-text{
+.job-text {
   font-size: 20px;
   color: #1a393b;
 }
 
-.job-btn a{
+.job-btn a {
   cursor: pointer;
 }
 
-.sidebar .single-item{
+.sidebar .single-item {
   font-size: 20px;
   color: #1a393b;
 }
 
-.dark_error{
+.dark_error {
   color: red;
 }

@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { CategoryRoutingModule } from './category-routing.module';
-import { CategoryComponent } from './category.component';
-import { SharedModule } from '../shared/shared.module';
-import { ListJobComponent } from './list-job/list-job.component';
-import { SingleJobComponent } from './single-job/single-job.component';
+import {CategoryRoutingModule} from './category-routing.module';
+import {CategoryComponent} from './category.component';
+import {SharedModule} from '../shared/shared.module';
+import {ListJobComponent} from './list-job/list-job.component';
+import {SingleJobComponent} from './single-job/single-job.component';
 
 
 @NgModule({
@@ -16,4 +16,5 @@ import { SingleJobComponent } from './single-job/single-job.component';
     SharedModule
   ]
 })
-export class CategoryModule { }
+export class CategoryModule {
+}

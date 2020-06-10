@@ -1,4 +1,4 @@
-import { LazyFilterPipe } from './lazy-filter.pipe';
+import {LazyFilterPipe} from './lazy-filter.pipe';
 
 describe('LazyFilterPipe', () => {
   it('create an instance', () => {

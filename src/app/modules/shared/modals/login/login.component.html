@@ -1,18 +1,18 @@
 <h2 mat-dialog-title>Se connecter</h2>
-<form [formGroup]="login"  (ngSubmit)="onLogin(login.value)">
-    <mat-dialog-content >
-        <!-- Form fields -->
-        <mat-form-field>
-            <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
-        </mat-form-field>
-        <mat-form-field>
-            <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
-        </mat-form-field> 
-    </mat-dialog-content>
-    <mat-dialog-actions>
-        <button class="mat-raised-button"(click)="close()">Close</button>
-        <button class="mat-raised-button mat-primary" type="submit">Se connecter</button>
-    </mat-dialog-actions> 
+<form (ngSubmit)="onLogin(login.value)" [formGroup]="login">
+  <mat-dialog-content>
+    <!-- Form fields -->
+    <mat-form-field>
+      <input formControlName="email" matInput placeholder="Adresse email" required type="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="password" matInput placeholder="Mot de passe" required type="password">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button (click)="close()" class="mat-raised-button">Close</button>
+    <button class="mat-raised-button mat-primary" type="submit">Se connecter</button>
+  </mat-dialog-actions>
 </form>
 
 

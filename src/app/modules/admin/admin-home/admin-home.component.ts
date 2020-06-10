@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-admin-home',
@@ -10,8 +10,6 @@ import { DatePipe } from '@angular/common';
 
 })
 export class AdminHomeComponent implements OnInit {
-
-
 
 
   listUser = false;
@@ -75,13 +73,13 @@ export class AdminHomeComponent implements OnInit {
         break;
       }
       case 'post_list' : {
-          this.addPost = false;
-          this.listPost = true;
-          this.candidatures = false;
-          this.listUser = false;
-          this.singlePost = false;
-          this.candidaturesByFactory = false;
-          break;
+        this.addPost = false;
+        this.listPost = true;
+        this.candidatures = false;
+        this.listUser = false;
+        this.singlePost = false;
+        this.candidaturesByFactory = false;
+        break;
       }
       case 'single_post' : {
         this.singlePost = true;
@@ -91,7 +89,7 @@ export class AdminHomeComponent implements OnInit {
         this.listUser = false;
         this.candidaturesByFactory = false;
         break;
-    }
+      }
     }
 
   }

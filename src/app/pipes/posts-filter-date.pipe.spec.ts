@@ -1,4 +1,4 @@
-import { PossFilterDatePipe } from './posts-filter-date.pipe';
+import {PossFilterDatePipe} from './posts-filter-date.pipe';
 
 describe('PossFilterDatePipe', () => {
   it('create an instance', () => {

@@ -1,15 +1,15 @@
 <div class="content-all">
   <div class="filter">
     <label for="title"> Type de postes :
-      <select name="type" id="title" class="input" (change)="onTypeChange($event.target.value)">
+      <select (change)="onTypeChange($event.target.value)" class="input" id="title" name="type">
         <option value="">Tous les types</option>
         <option value="en-cours">Postes en cours</option>
         <option value="archives">Postes archivés</option>
       </select>
     </label>
     <label for="structure"> Structure:
-      <input ngModel type="text" name="structure" id="structure" class="input"
-             (keyup)="  onStructureChange($event.target.value)" placeholder="Nom de l'entreprise">
+      <input (keyup)="  onStructureChange($event.target.value)" class="input" id="structure" name="structure" ngModel
+             placeholder="Nom de l'entreprise" type="text">
     </label>
     <span class="list-length">
         {{candidatures.length}} candidatures
@@ -17,8 +17,8 @@
   </div>
   <div class="content-body">
     <div class="row">
-      <div class="col-lg-10 mb-4"
-           *ngFor="let candidature of candidatures | paginate:{itemsPerPage: 8, currentPage: p} ;let i = index ">
+      <div *ngFor="let candidature of candidatures | paginate:{itemsPerPage: 8, currentPage: p} ;let i = index "
+           class="col-lg-10 mb-4">
         <div class="main-content">
           <div class="single-content1">
             <div class="single-job  d-lg-flex justify-content-between">
@@ -27,15 +27,15 @@
                 <ul class="mt-4">
                   <li class="mb-3"><h5><i class="fa fa-envelope"></i> {{candidature.email}}</h5></li>
                   <li class="mb-3"><h5><i class="fa fa-phone"></i>{{candidature.tel}}</h5></li>
-                  <li><h5><i class="fa fa-birthday-cake"></i> {{candidature.date_naissance}}</h5></li>
+                  <li><h5><i class="fa fa-birthday-cake"></i> {{candidature.dateNaissance}}</h5></li>
                 </ul>
               </div>
               <div class="job-text">
                 <h4>{{candidature.titre}}</h4>
                 <ul class="mt-4">
                   <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{candidature.lieu}}, Sénégal</h5></li>
-                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{candidature.structure_name}}</h5></li>
-                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{candidature.date_val}}</h5></li>
+                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{candidature.structureName}}</h5></li>
+                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{candidature.dateVal}}</h5></li>
                 </ul>
               </div>
               <div class="job-btn align-self-center">
@@ -44,27 +44,37 @@
             </div>
           </div>
         </div>
-        <div class="candidature-info" *ngIf="candidature.isActive">
+        <div *ngIf="candidature.isActive" class="candidature-info">
           <h4 class="align-self-center mb-4">Informations supplémentaires</h4>
           <div class="row">
             <div class="col-lg-6">
               <ul class="info-list">
                 <li>Civilité</li>
+                <hr>
                 <li>Adresse</li>
+                <hr>
                 <li>Niveau d'étude</li>
+                <hr>
                 <li>Niveau d'expérience</li>
+                <hr>
                 <li>Domaine actuel</li>
+                <hr>
                 <li>Domaine recherché</li>
               </ul>
             </div>
             <div class="col-lg-6">
               <ul class="info-list">
                 <li>{{candidature.civilite}}</li>
+                <hr>
                 <li>{{candidature.adresse}}</li>
-                <li>{{candidature.niveau_etude}}</li>
-                <li>{{candidature.niveau_experience}}</li>
-                <li>{{candidature.domaine_actuel}}</li>
-                <li>{{candidature.domaine_recherche}}</li>
+                <hr>
+                <li>{{candidature.etudeLevel}}</li>
+                <hr>
+                <li>{{candidature.experienceLevel}}</li>
+                <hr>
+                <li>{{candidature.actualDomain}}</li>
+                <hr>
+                <li>{{candidature.searchDomain}}</li>
               </ul>
             </div>
           </div>
@@ -72,12 +82,12 @@
       </div>
     </div>
   </div>
-  <div class="error-info" *ngIf="candidatures.length === 0">
+  <div *ngIf="candidatures.length === 0" class="error-info">
       <span>
         Aucune candidature trouvée
       </span>
   </div>
-  <div class="pagination" *ngIf="candidatures.length > 0">
+  <div *ngIf="candidatures.length > 0" class="pagination">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { LocationFilterPipe } from './location-filter.pipe';
+import {LocationFilterPipe} from './location-filter.pipe';
 
 describe('LocationFilterPipe', () => {
   it('create an instance', () => {

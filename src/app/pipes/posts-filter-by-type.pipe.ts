@@ -14,19 +14,19 @@ export class PostsFilterByTypePipe implements PipeTransform {
       return items;
     }
     return items.filter((it: Post) => {
-      const date = new Date(it.date_val).toDateString();
+      const date = new Date(it.dateVal).toDateString();
       const dateNow = new Date().toDateString();
       switch (type) {
         case 'en-cours':
           return new Date(date).getTime() >= new Date(dateNow).getTime() &&
-            it.structure_name.toLowerCase().includes(structure ? structure : '');
+            it.structureName.toLowerCase().includes(structure ? structure : '');
           break;
         case 'archives':
           return new Date(date).getTime() < new Date(dateNow).getTime() &&
-            it.structure_name.toLowerCase().includes(structure ? structure : '');
+            it.structureName.toLowerCase().includes(structure ? structure : '');
           break;
         default:
-          return it.structure_name.toLowerCase().includes(structure ? structure : '');
+          return it.structureName.toLowerCase().includes(structure ? structure : '');
           break;
       }
     });

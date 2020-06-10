@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Post } from '../models/post';
+import {Pipe, PipeTransform} from '@angular/core';
+import {Post} from '../models/post';
 
 @Pipe({
   name: 'locationFilter'
@@ -7,10 +7,14 @@ import { Post } from '../models/post';
 export class LocationFilterPipe implements PipeTransform {
 
   transform(items: Post[], region: string): Post[] {
-    if(!items) return [];
-    if(!region) return items;
-    return items.filter ((it:Post) => {
-        return (it.lieu === region);
+    if (!items) {
+      return [];
+    }
+    if (!region) {
+      return items;
+    }
+    return items.filter((it: Post) => {
+      return (it.lieu === region);
     });
   }
 

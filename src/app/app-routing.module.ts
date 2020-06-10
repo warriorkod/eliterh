@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from './guards/is_admin';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthGuardService} from './guards/is_admin';
 
 
 export const routes: Routes = [
@@ -48,8 +48,10 @@ export const routes: Routes = [
     pathMatch: 'full'
   }*/
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

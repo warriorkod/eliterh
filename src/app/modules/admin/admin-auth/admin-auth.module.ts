@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AdminAuthRoutingModule } from './admin-auth-routing.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AdminAuthComponent } from './admin-auth.component';
+import {AdminAuthRoutingModule} from './admin-auth-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AdminAuthComponent} from './admin-auth.component';
 
 
 @NgModule({
@@ -15,4 +15,5 @@ import { AdminAuthComponent } from './admin-auth.component';
     FormsModule
   ]
 })
-export class AdminAuthModule { }
+export class AdminAuthModule {
+}

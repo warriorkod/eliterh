@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderAdminComponent } from './header-admin.component';
+import {HeaderAdminComponent} from './header-admin.component';
 
 describe('HeaderAdminComponent', () => {
   let component: HeaderAdminComponent;
@@ -8,9 +8,9 @@ describe('HeaderAdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderAdminComponent ]
+      declarations: [HeaderAdminComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

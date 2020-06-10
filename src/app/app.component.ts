@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import * as firebase from 'firebase/app';
 
 
@@ -9,8 +9,9 @@ import * as firebase from 'firebase/app';
 })
 export class AppComponent {
   title = 'EliteRhWeb';
+
   constructor() {
-      // Your web app's Firebase configuration
+    // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: 'AIzaSyB5cwDf4a-r6bzSjxuLm5IpVrOt6RFE-PY\n',
       authDomain: 'eliterh-1d34c.firebaseapp.com',

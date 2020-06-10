@@ -1,11 +1,11 @@
-import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { SessionService } from 'src/app/services';
-import { User } from '../../../../models/user';
-import { Subscription, Subject } from 'rxjs';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {SessionService} from 'src/app/services';
+import {User} from '../../../../models/user';
+import {Subject, Subscription} from 'rxjs';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import {DataTableDirective} from "angular-datatables";
+import {Router} from '@angular/router';
+import {DataTableDirective} from 'angular-datatables';
 
 
 @Component({
@@ -26,7 +26,8 @@ export class ListUserComponent implements OnInit, OnDestroy, AfterViewInit {
   action = 'Inactif';
   btnStyle = 'btn-inactif';
 
-  constructor(public dialog: MatDialog, private route: Router, private apiservice: SessionService) {}
+  constructor(public dialog: MatDialog, private route: Router, private apiservice: SessionService) {
+  }
 
   ngOnInit() {
     this.dtOptions = {
@@ -39,13 +40,13 @@ export class ListUserComponent implements OnInit, OnDestroy, AfterViewInit {
     this.usersSubscription = this.apiservice.usersSubject.subscribe(
       (users: User[]) => {
         this.users = users.filter(user => user.isAdmin !== true);
-         if (this.isDtInitialized) {
+        if (this.isDtInitialized) {
           this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
             dtInstance.destroy();
             this.dtTrigger.next();
           });
         } else {
-          this.isDtInitialized = true
+          this.isDtInitialized = true;
           this.dtTrigger.next();
         }
       }

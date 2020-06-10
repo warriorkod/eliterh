@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import { MatDialogRef } from '@angular/material';
-import { SessionService } from 'src/app/services';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef} from '@angular/material';
+import {SessionService} from 'src/app/services';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,8 @@ import { SessionService } from 'src/app/services';
 export class LoginComponent implements OnInit {
   login: FormGroup;
 
-  constructor(private dialogRef: MatDialogRef<LoginComponent>, private _apiService: SessionService) { }
+  constructor(private dialogRef: MatDialogRef<LoginComponent>, private apiService: SessionService) {
+  }
 
   ngOnInit() {
     this.buildLoginForm();
@@ -27,11 +28,11 @@ export class LoginComponent implements OnInit {
 
 
   onLogin(formValue) {
-    this._apiService.signInUser(formValue);
+    this.apiService.signInUser(formValue).then();
   }
 
   close() {
     this.dialogRef.close();
-  } 
+  }
 
 }

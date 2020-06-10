@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SessionService} from 'src/app/services';
 import {Post} from 'src/app/models/post';
-import {FormGroup, Validators, FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {formatDate} from '@angular/common';
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -14,14 +14,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./view-single-job.component.css']
 })
 export class ViewSingleJobComponent implements OnInit {
-  @ViewChild('fcompetences') private competenceEl: ElementRef;
-
   postId: any;
   post: Post = new Post();
   show = true;
   addForm: FormGroup;
   minDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   competences: string[] = [];
+  @ViewChild('fcompetences') private competenceEl: ElementRef;
   private postsSubscription: Subscription;
 
 
@@ -51,9 +50,8 @@ export class ViewSingleJobComponent implements OnInit {
       type: new FormControl(this.post.type, Validators.required),
       categorie: new FormControl(this.post.categorie, Validators.required),
       fiche: new FormControl(this.post.fiche, Validators.required),
-      /*competences: new FormControl (this.post.competences, Validators.required),*/
-      date_val: new FormControl(this.post.date_val, Validators.required),
-      structure_name: new FormControl(this.post.structure_name, Validators.required),
+      dateVal: new FormControl(this.post.dateVal, Validators.required),
+      structureName: new FormControl(this.post.structureName, Validators.required),
       secteur: new FormControl(this.post.secteur, Validators.required)
     });
   }

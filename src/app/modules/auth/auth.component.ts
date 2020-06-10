@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SessionService } from 'src/app/services';
-import { Post } from 'src/app/models/post';
-import { Subscription } from 'rxjs';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {SessionService} from 'src/app/services';
+import {Post} from 'src/app/models/post';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -27,13 +27,13 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit {
     {nom: 'Commerce', img: 'commerce.png'},
     {nom: 'Industries alimentaires', img: 'Sushi-icon_30268.png'},
     {nom: 'Banques et finances', img: 'banque.png'},
-   {nom: 'Hôtellerie', img: '1496677265-2_84643.png'}
+    {nom: 'Hôtellerie', img: '1496677265-2_84643.png'}
   ];
   showText = true;
 
   constructor(private apiservice: SessionService, private router: Router) {
     window.scrollTo(0, 0);
-   }
+  }
 
   ngOnInit() {
     this.postsSubscription = this.apiservice.postsSubject.subscribe(
@@ -103,7 +103,7 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!search) {
       numberOccur = this.posts.length;
     } else {
-      this.posts.forEach( item => {
+      this.posts.forEach(item => {
         if (Object.values(item).includes(search)) {
           numberOccur++;
         }

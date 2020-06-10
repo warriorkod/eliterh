@@ -1,4 +1,4 @@
-import { PostsFilterByTittrePipe } from './posts-filter-by-tittre.pipe';
+import {PostsFilterByTittrePipe} from './posts-filter-by-tittre.pipe';
 
 describe('PostsFilterByTittrePipe', () => {
   it('create an instance', () => {

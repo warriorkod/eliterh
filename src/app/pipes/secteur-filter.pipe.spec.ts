@@ -1,4 +1,4 @@
-import { SecteurFilterPipe } from './secteur-filter.pipe';
+import {SecteurFilterPipe} from './secteur-filter.pipe';
 
 describe('SecteurFilterPipe', () => {
   it('create an instance', () => {

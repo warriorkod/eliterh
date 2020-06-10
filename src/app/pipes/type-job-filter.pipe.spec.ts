@@ -1,4 +1,4 @@
-import { TypeJobFilterPipe } from './type-job-filter.pipe';
+import {TypeJobFilterPipe} from './type-job-filter.pipe';
 
 describe('TypeJobFilterPipe', () => {
   it('create an instance', () => {

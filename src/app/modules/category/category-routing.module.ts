@@ -1,8 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CategoryComponent } from './category.component';
-import { ListJobComponent } from './list-job/list-job.component';
-import { SingleJobComponent } from './single-job/single-job.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CategoryComponent} from './category.component';
 
 
 const routes: Routes = [
@@ -22,7 +20,8 @@ const routes: Routes = [
     path: 'single-job',
     component: CategoryComponent
   },
-  { path: 'single-job/:id',
+  {
+    path: 'single-job/:id',
     component: CategoryComponent
   }
 
@@ -32,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CategoryRoutingModule { }
+export class CategoryRoutingModule {
+}

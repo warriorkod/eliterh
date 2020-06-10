@@ -1,5 +1,5 @@
-import {Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
-import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as L from 'leaflet';
 import {MarkerService} from '../../services/map-leaflet/marker.service';
@@ -43,21 +43,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
     this.markerService.makePositionMarkers(this.map);
   }
 
-  private initMap(): void {
-    this.map = L.map('map', {
-      center: [15.4557184, -15.7481313],
-      zoom: 6
-    });
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-    tiles.addTo(this.map);
-  }
-
-
-  /* Section send mail */
-
   createForm() {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -67,6 +52,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+  /* Section send mail */
 
   onSubmit() {
     const {name, email, subject, message} = this.form.value;
@@ -82,6 +69,18 @@ export class ContactComponent implements OnInit, AfterViewInit {
 
     this.af.list('/messages').push(formRequest);
     this.form.reset();
+  }
+
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: [14.75, -17.45],
+      zoom: 12
+    });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+    tiles.addTo(this.map);
   }
 
 }

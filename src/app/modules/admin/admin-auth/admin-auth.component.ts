@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SessionService } from 'src/app/services';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {SessionService} from 'src/app/services';
 
 @Component({
   selector: 'app-admin-auth',
@@ -9,22 +9,22 @@ import { SessionService } from 'src/app/services';
   styleUrls: ['./admin-auth.component.css']
 })
 export class AdminAuthComponent implements OnInit {
-  login : FormGroup;
+  login: FormGroup;
   errorMessage: any;
 
-  constructor( private router: Router, private _apiService: SessionService) {
+  constructor(private router: Router, private apiService: SessionService) {
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.login = new FormGroup({
-      email: new FormControl ('', Validators.required),
-      password: new FormControl ('', Validators.required)
-    })
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
   }
 
   onLogin(formValue) {
-    this._apiService.signInUser(formValue).then(
+    this.apiService.signInUser(formValue).then(
       () => {
         this.router.navigate(['/admin_home_elith_rh']);
       },

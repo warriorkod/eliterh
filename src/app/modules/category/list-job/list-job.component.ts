@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter, ViewChildren, AfterViewInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SessionService } from 'src/app/services';
-import { Subscription } from 'rxjs';
-import { Post } from 'src/app/models/post';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SessionService} from 'src/app/services';
+import {Subscription} from 'rxjs';
+import {Post} from 'src/app/models/post';
 
 @Component({
   selector: 'app-list-job',
@@ -15,12 +15,12 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
   postsSubscription: Subscription;
   posts: Post[] = [];
   regions = ['Dakar', 'Diourbel', 'Fatick', 'Kaffrine', 'Kaolack',
-  'Kédougou', 'Kolda', 'Louga', 'Matam', 'Saint-Louis', 'Sédhiou', 'Tambacounda', 'Thiès', 'Ziguinchor'];
+    'Kédougou', 'Kolda', 'Louga', 'Matam', 'Saint-Louis', 'Sédhiou', 'Tambacounda', 'Thiès', 'Ziguinchor'];
   currentRegion = '';
   types = ['CDI', 'CDD', 'Prestation de services', 'Intérim', 'Stage'];
   currenType = '';
   secteurs = ['Bâtiment et travaux publics', 'Immobilier', 'Télécommunication', 'Agroalimentaire',
-   'Commerce', 'Industries Alimentaires', 'Banques et Finances', 'Hôtellerie', 'Autres'];
+    'Commerce', 'Industries Alimentaires', 'Banques et Finances', 'Hôtellerie', 'Autres'];
   currentSecteur = '';
   links = document.getElementsByClassName('side-btn');
   liBtn = document.getElementsByClassName('li-active');
@@ -32,10 +32,10 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
     this.route.params.subscribe(params => {
       this.currenType = (params.type === 'all' ? '' : params.type);
       this.currentRegion = (params.region === 'all' ? '' : params.region);
-      this.currentSecteur = (params.secteur  === 'all' ? '' : params.secteur);
+      this.currentSecteur = (params.secteur === 'all' ? '' : params.secteur);
     });
     window.scrollTo(0, 0);
-   }
+  }
 
   ngOnInit() {
     this.postsSubscription = this.apiservice.postsSubject.subscribe(
@@ -49,15 +49,15 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     );
     this.apiservice.emitPosts();
-    this.apiservice.itemsLengthSubject.subscribe( length => {
+    this.apiservice.itemsLengthSubject.subscribe(length => {
       this.postsToFetch = length;
     });
   }
 
   ngAfterViewInit(): void {
     this.addCurrenType(this.currenType, this.currenType ? this.types.indexOf(this.currenType) : -1);
-    this.addCurrentRegion(this.currentRegion,  this.currentRegion ? this.regions.indexOf(this.currentRegion) : -1);
-    this.addCurrentSecteur(this.currentSecteur,  this.secteurs ? this.secteurs.indexOf(this.currentSecteur) : -1);
+    this.addCurrentRegion(this.currentRegion, this.currentRegion ? this.regions.indexOf(this.currentRegion) : -1);
+    this.addCurrentSecteur(this.currentSecteur, this.secteurs ? this.secteurs.indexOf(this.currentSecteur) : -1);
   }
 
   openSingkeJob(post) {
@@ -117,7 +117,7 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!search) {
       numberOccur = this.posts.length;
     } else {
-      this.posts.forEach( item => {
+      this.posts.forEach(item => {
         if (Object.values(item).includes(search)) {
           numberOccur++;
         }

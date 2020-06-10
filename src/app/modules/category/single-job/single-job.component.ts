@@ -1,14 +1,13 @@
-import {Component, OnInit, OnDestroy, ViewChild, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {Post} from 'src/app/models/post';
 import {SessionService} from 'src/app/services';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from 'src/app/models/user';
 import * as firebase from 'firebase';
 import Swal from 'sweetalert2';
-import {SwalPortalTargets, SwalComponent} from '@sweetalert2/ngx-sweetalert2';
-import {Candidature} from 'src/app/models/candidature';
-import {Observable, of, Subscription} from 'rxjs';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {SwalComponent, SwalPortalTargets} from '@sweetalert2/ngx-sweetalert2';
+import {Subscription} from 'rxjs';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-single-job',
@@ -16,7 +15,6 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
   styleUrls: ['./single-job.component.css']
 })
 export class SingleJobComponent implements OnInit, OnDestroy {
-  @ViewChild('subscribe', {static: true}) private subscribe: SwalComponent;
   @Output() singleLoader = new EventEmitter();
   postId: any;
   post: Post;
@@ -25,6 +23,7 @@ export class SingleJobComponent implements OnInit, OnDestroy {
   userInfo: FormGroup;
   usersSubscription: any;
   loading: boolean;
+  @ViewChild('subscribe', {static: true}) private subscribe: SwalComponent;
   private postsSubscription: Subscription;
 
 
@@ -71,14 +70,14 @@ export class SingleJobComponent implements OnInit, OnDestroy {
       prenom: new FormControl(this.user.prenom ? this.user.prenom : '', Validators.required),
       // email: new FormControl(this.user.email, Validators.required),
       tel: new FormControl(this.user.tel ? this.user.tel : '', Validators.required),
-      date_naissance: new FormControl(this.user.date_naissance ? this.user.date_naissance : '', Validators.required),
+      dateNaissance: new FormControl(this.user.dateNaissance ? this.user.dateNaissance : '', Validators.required),
       adresse: new FormControl(this.user.adresse ? this.user.adresse : '', Validators.required),
       lieu: new FormControl(this.user.lieu ? this.user.lieu : '', Validators.required),
       civilite: new FormControl(this.user.civilite ? this.user.civilite : '', Validators.required),
-      niveau_etude: new FormControl(this.user.niveau_etude ? this.user.niveau_etude : '', Validators.required),
-      niveau_experience: new FormControl(this.user.niveau_experience ? this.user.niveau_experience : '', Validators.required),
-      domaine_actuel: new FormControl(this.user.domaine_actuel ? this.user.domaine_actuel : '', Validators.required),
-      domaine_recherche: new FormControl(this.user.domaine_recherche ? this.user.domaine_recherche : '', Validators.required)
+      etudeLevel: new FormControl(this.user.etudeLevel ? this.user.etudeLevel : '', Validators.required),
+      experienceLevel: new FormControl(this.user.experienceLevel ? this.user.experienceLevel : '', Validators.required),
+      actualDomain: new FormControl(this.user.actualDomain ? this.user.actualDomain : '', Validators.required),
+      searchDomain: new FormControl(this.user.searchDomain ? this.user.searchDomain : '', Validators.required)
     });
   }
 
@@ -140,7 +139,7 @@ export class SingleJobComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.postsSubscription.unsubscribe()
+    this.postsSubscription.unsubscribe();
   }
 
 }

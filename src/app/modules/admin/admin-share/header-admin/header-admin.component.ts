@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SessionService } from 'src/app/services';
+import {Component, OnInit} from '@angular/core';
+import {SessionService} from 'src/app/services';
 
 @Component({
   selector: 'app-header-admin',
@@ -8,7 +8,7 @@ import { SessionService } from 'src/app/services';
 })
 export class HeaderAdminComponent implements OnInit {
 
-  constructor( private apiServie: SessionService) {
+  constructor(private apiServie: SessionService) {
 
   }
 

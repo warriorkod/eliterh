@@ -1,27 +1,27 @@
 <div class="admin-container">
-    <form [formGroup]="login" class="form" (ngSubmit)="onLogin(login.value)">
-        <h2 class="title">Elite RH</h2>
-    
-        <div class="form-group">
-            <input
-            class="form-control input" 
-            type="email" formControlName="email" 
-            placeholder="Email"
-            required/>
-        </div>
-    
-        <div class="form-group">
-            <input
-            class="form-control input" 
-            type="password" formControlName="password" 
-            placeholder="Mot de passe"
-            required/>
-        </div>
-    
-        <input  [disabled]="login.invalid" class="btn input" type="submit" value="Valider"/>
-        <p class="text-danger">{{ errorMessage }}</p>
+  <form (ngSubmit)="onLogin(login.value)" [formGroup]="login" class="form">
+    <h2 class="title">Elite RH</h2>
 
-    </form>
+    <div class="form-group">
+      <input
+        class="form-control input"
+        formControlName="email" placeholder="Email"
+        required
+        type="email"/>
+    </div>
+
+    <div class="form-group">
+      <input
+        class="form-control input"
+        formControlName="password" placeholder="Mot de passe"
+        required
+        type="password"/>
+    </div>
+
+    <input [disabled]="login.invalid" class="btn input" type="submit" value="Valider"/>
+    <p class="text-danger">{{ errorMessage }}</p>
+
+  </form>
 </div>
 
 
