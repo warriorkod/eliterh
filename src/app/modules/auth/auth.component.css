@@ -283,14 +283,6 @@ ngb-carousel {
   margin-bottom: 15px;
 }
 
-/*
-.row-service {
-  background: #35a087;
-  padding: 20px;
-  border-radius: 15px;
-}
-*/
-
 .bottom-check {
   position: absolute;
   bottom: 20px;
@@ -486,11 +478,3 @@ ngb-carousel {
 .fa-arrow-left {
   color: #35a087;
 }
-
-
-/*
-div:hover
-{
-  -webkit-animation: masuperanimation 2s; /* Safari, Opera, Chrome */
-/* animation: masuperanimation 2s; /* Tous les autres navigateurs */
-/*}*/

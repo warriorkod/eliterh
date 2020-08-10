@@ -48,15 +48,19 @@
       <div class="col-lg-9">
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
           <div class="left">
-            <input formControlName="name" onblur="this.placeholder = 'Saisissez votre nom'" onfocus="this.placeholder = ''" placeholder="Saisissez votre nom"
+            <input formControlName="name" onblur="this.placeholder = 'Saisissez votre nom'"
+                   onfocus="this.placeholder = ''" placeholder="Saisissez votre nom"
                    required type="text">
-            <input formControlName="email" onblur="this.placeholder = 'Saisissez votre email'" onfocus="this.placeholder = ''"
+            <input formControlName="email" onblur="this.placeholder = 'Saisissez votre email'"
+                   onfocus="this.placeholder = ''"
                    placeholder="Saisissez votre email" required type="email">
-            <input formControlName="subject" onblur="this.placeholder = 'objet de votre email'" onfocus="this.placeholder = ''"
+            <input formControlName="subject" onblur="this.placeholder = 'objet de votre email'"
+                   onfocus="this.placeholder = ''"
                    placeholder="Saisissez l'objet de votre email" required type="text">
           </div>
           <div class="right">
-            <textarea cols="20" formControlName="message" onblur="this.placeholder = 'Saisissez votre message'" onfocus="this.placeholder = ''"
+            <textarea cols="20" formControlName="message" onblur="this.placeholder = 'Saisissez votre message'"
+                      onfocus="this.placeholder = ''"
                       placeholder="Saisissez votre message" required
                       rows="7"></textarea>
           </div>

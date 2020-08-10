@@ -17,6 +17,13 @@
             >
               <ng-template ngbSlide>
                 <div class="picsum-img-wrapper">
+                  <!--<picture>
+                    <source media="(max-width:500px)" srcset="img_pink_flowers.jpg">
+                    <source media="(max-width:800px)" srcset="img_white_flower.jpg">
+                    <source media="(max-width:1200px)" srcset="img_white_flower.jpg">
+                    <img alt="Angular Carousel 1" src="../../../assets/images/front-image/accueil1-min.jpg">
+                  </picture>-->
+
                   <img alt="Angular Carousel 1" src="../../../assets/images/front-image/accueil1-min.jpg">
                 </div>
                 <div class="carousel-caption">
@@ -122,8 +129,8 @@
                 <option value="Télécommunication">Télécommunication</option>
                 <option value="Agroalimentaire">Agroalimentaire</option>
                 <option value="Commerce">Commerce</option>
-                <option value="Industries alimentaires">Industries alimentaires</option>
-                <option value="Banques et établissements financiers">Banques et finances</option>
+                <option value="Industries Alimentaires">Industries Alimentaires</option>
+                <option value="Banque, Finance & Assurance">Banque, Finance & Assurance</option>
                 <option value="Hôtellerie">Hôtellerie</option>
                 <option value="Autres">Autres</option>
               </select>
@@ -236,28 +243,30 @@
           <div class="jobs-tab tab-item">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item li-active">
-                <a (click)="changeCurrenType('', 0)" aria-controls="home" aria-selected="true" class="nav-link" data-toggle="tab"
+                <a (click)="changeCurrenType('')" aria-controls="home" aria-selected="true" class="nav-link"
+                   data-toggle="tab"
                    href="#recent" id="home-tab" role="tab">récent</a>
               </li>
               <li class="nav-item li-active">
-                <a (click)="changeCurrenType('CDI', 1)" aria-controls="profile" aria-selected="false" class="nav-link"
+                <a (click)="changeCurrenType('CDI')" aria-controls="profile" aria-selected="false" class="nav-link"
                    data-toggle="tab" href="#full-time" id="profile-tab" role="tab">CDI</a>
               </li>
               <li class="nav-item li-active">
-                <a (click)="changeCurrenType('CDD', 2)" aria-controls="part-time" aria-selected="false" class="nav-link"
+                <a (click)="changeCurrenType('CDD')" aria-controls="part-time" aria-selected="false" class="nav-link"
                    data-toggle="tab" href="#part-time" id="contact-tab" role="tab">CDD</a>
               </li>
               <li class="nav-item li-active">
-                <a (click)="changeCurrenType('Prestation de services', 3)" aria-controls="profile" aria-selected="false"
+                <a (click)="changeCurrenType('Prestation de services')" aria-controls="profile" aria-selected="false"
                    class="nav-link" data-toggle="tab" href="#prestation" id="profile-tab" role="tab">Prestation
                   de services</a>
               </li>
               <li class="nav-item li-active">
-                <a (click)="changeCurrenType('Intérim', 4)" aria-controls="part-time" aria-selected="false" class="nav-link"
+                <a (click)="changeCurrenType('Intérim')" aria-controls="part-time" aria-selected="false"
+                   class="nav-link"
                    data-toggle="tab" href="#interim" id="contact-tab" role="tab">Intérim</a>
               </li>
               <li class="nav-item li-active">
-                <a (click)="changeCurrenType('Stage', 3)" aria-controls="profile" aria-selected="false" class="nav-link"
+                <a (click)="changeCurrenType('Stage')" aria-controls="profile" aria-selected="false" class="nav-link"
                    data-toggle="tab" href="#stage" id="profile-tab" role="tab">Stage</a>
               </li>
             </ul>
@@ -268,7 +277,8 @@
         <div class="col-lg-12">
           <div class="tab-content" id="myTabContent">
             <div aria-labelledby="home-tab" class="tab-pane fade show active" id="recent" role="tabpanel">
-              <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | lazyFilter : size; let i = index"
+              <div (click)="openSingkeJob(post)"
+                   *ngFor="let post of posts | postsFilterByType : period | possFilterDate | lazyFilter : size; let i = index"
                    class="single-job mb-4 d-lg-flex justify-content-between">
                 <div class="job-text">
                   <h4>{{post.titre}}</h4>
@@ -286,7 +296,8 @@
               </div>
             </div>
             <div aria-labelledby="profile-tab" class="tab-pane fade" id="full-time" role="tabpanel">
-              <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
+              <div (click)="openSingkeJob(post)"
+                   *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
                    class="single-job mb-4 d-lg-flex justify-content-between">
                 <div class="job-text">
                   <h4>{{post.titre}}</h4>
@@ -304,7 +315,8 @@
               </div>
             </div>
             <div aria-labelledby="contact-tab" class="tab-pane fade" id="part-time" role="tabpanel">
-              <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
+              <div (click)="openSingkeJob(post)"
+                   *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
                    class="single-job mb-4 d-lg-flex justify-content-between">
                 <div class="job-text">
                   <h4>{{post.titre}}</h4>
@@ -322,7 +334,8 @@
               </div>
             </div>
             <div aria-labelledby="contact-tab" class="tab-pane fade" id="stage" role="tabpanel">
-              <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
+              <div (click)="openSingkeJob(post)"
+                   *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
                    class="single-job mb-4 d-lg-flex justify-content-between">
                 <div class="job-text">
                   <h4>{{post.titre}}</h4>
@@ -340,7 +353,8 @@
               </div>
             </div>
             <div aria-labelledby="contact-tab" class="tab-pane fade" id="interim" role="tabpanel">
-              <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
+              <div (click)="openSingkeJob(post)"
+                   *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
                    class="single-job mb-4 d-lg-flex justify-content-between">
                 <div class="job-text">
                   <h4>{{post.titre}}</h4>
@@ -358,7 +372,8 @@
               </div>
             </div>
             <div aria-labelledby="contact-tab" class="tab-pane fade" id="prestation" role="tabpanel">
-              <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
+              <div (click)="openSingkeJob(post)"
+                   *ngFor="let post of posts | postsFilterByType : period | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index"
                    class="single-job mb-4 d-lg-flex justify-content-between">
                 <div class="job-text">
                   <h4>{{post.titre}}</h4>

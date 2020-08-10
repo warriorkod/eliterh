@@ -17,9 +17,6 @@ export class SessionService {
   candidatures: Candidature[] = [];
   candidaturesSubject = new Subject<Candidature[]>();
   itemsLengthSubject = new Subject<number>();
-  candidaruresByFactory = [];
-  candidaruresByFactorySubject = new Subject<any>();
-
 
   constructor() {
     this.getAllPost();
@@ -41,10 +38,6 @@ export class SessionService {
 
   emitCandidatures() {
     this.candidaturesSubject.next(this.candidatures);
-  }
-
-  emitCandidaturesByFactory() {
-    this.candidaruresByFactorySubject.next(this.candidaruresByFactory);
   }
 
   // create a new post
@@ -160,15 +153,6 @@ export class SessionService {
     this.emitCandidatures();
   }
 
-  // get a single post
-  getSinglePost(id: string) {
-    return new Promise(
-      (resolve, reject) => {
-        resolve(this.posts[id]);
-      }
-    );
-  }
-
   // get post index
   getPostIndex(id: string) {
     return this.posts.findIndex(
@@ -195,34 +179,6 @@ export class SessionService {
         resolve(this.posts[postIndexToFind]);
       }
     );
-  }
-
-  // get post by factory
-  getPostsByFactory() {
-    this.candidatures.forEach(value => {
-      const index = this.posts.findIndex((post) => {
-        if (post.id === value.id) {
-          return true;
-        }
-      });
-      if (index !== -1) {
-        const exists = this.candidaruresByFactory.findIndex(el => {
-          if (el.id === index) {
-            return true;
-          }
-        });
-        if (exists === -1) {
-          const item = {
-            id: this.posts[index].id,
-            nom_structure: this.posts[index].structureName,
-            title: this.posts[index].titre,
-            secteur: this.posts[index].secteur,
-          };
-          this.candidaruresByFactory.push(item);
-        }
-      }
-    });
-    this.emitCandidaturesByFactory();
   }
 
   // get a single user
@@ -260,13 +216,6 @@ export class SessionService {
     );
     return exist;
   }
-
-
-  // Postuler
-  postuler(candidatures) {
-
-  }
-
 
   // create a new user
   createNewUser(formValue) {

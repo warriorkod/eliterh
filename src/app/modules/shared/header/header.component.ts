@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {SessionService} from 'src/app/services';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import Swal from 'sweetalert2';
 import {SwalComponent, SwalPortalTargets} from '@sweetalert2/ngx-sweetalert2';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -148,7 +148,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getLogin() {
-    this.signin.fire();
+    this.signin.fire().then();
   }
 
   onLogin(formValue) {
@@ -158,7 +158,7 @@ export class HeaderComponent implements OnInit {
           title: 'Bienvenue.',
           showConfirmButton: false,
           timer: 1500
-        });
+        }).then();
       },
       (error) => {
         let message: string;
@@ -175,12 +175,12 @@ export class HeaderComponent implements OnInit {
           'Oups!',
           message,
           'error'
-        );
+        ).then();
       });
   }
 
   signup() {
-    this.subscribe.fire();
+    this.subscribe.fire().then();
   }
 
   createUser(formValue) {
@@ -194,7 +194,7 @@ export class HeaderComponent implements OnInit {
           title: 'Compte créé avec succès.',
           showConfirmButton: false,
           timer: 1500
-        });
+        }).then();
       },
       (error) => {
         let message: string;
@@ -209,7 +209,7 @@ export class HeaderComponent implements OnInit {
           'Oups!',
           message,
           'error'
-        );
+        ).then();
       });
   }
 
@@ -222,24 +222,24 @@ export class HeaderComponent implements OnInit {
           title: 'A très bientôt.',
           showConfirmButton: false,
           timer: 1500
-        });
+        }).then();
       },
       (error) => {
         Swal.fire(
           'Oups!',
           'Une erreur est survenue.',
           'error'
-        );
+        ).then();
       });
   }
 
   closeSignin() {
-    this.signin.dismiss();
+    this.signin.dismiss().then();
   }
 
 
   closeSignup() {
-    this.subscribe.dismiss();
+    this.subscribe.dismiss().then();
   }
 
   clearInput() {

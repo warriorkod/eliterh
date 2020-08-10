@@ -50,6 +50,7 @@ export class ViewSingleJobComponent implements OnInit {
       type: new FormControl(this.post.type, Validators.required),
       categorie: new FormControl(this.post.categorie, Validators.required),
       fiche: new FormControl(this.post.fiche, Validators.required),
+      dateCreate: new FormControl(this.post.dateCreate, Validators.required),
       dateVal: new FormControl(this.post.dateVal, Validators.required),
       structureName: new FormControl(this.post.structureName, Validators.required),
       secteur: new FormControl(this.post.secteur, Validators.required)

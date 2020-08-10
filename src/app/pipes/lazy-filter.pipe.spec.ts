@@ -1,8 +1,12 @@
 import {LazyFilterPipe} from './lazy-filter.pipe';
+import {SessionService} from '../services';
+import {inject} from '@angular/core/testing';
 
 describe('LazyFilterPipe', () => {
   it('create an instance', () => {
-    const pipe = new LazyFilterPipe();
-    expect(pipe).toBeTruthy();
+    inject([SessionService], (apiService: SessionService) => {
+      const pipe = new LazyFilterPipe(apiService);
+      expect(pipe).toBeTruthy();
+    });
   });
 });

@@ -19,12 +19,12 @@ export class LazyFilterPipe implements PipeTransform {
       return items;
     }
     return items.filter((it: Post) => {
-      const inddex = items.findIndex(value => {
+      const index = items.findIndex(value => {
         if (it === value) {
           return true;
         }
       });
-      return (inddex < size);
+      return (index < size);
     });
   }
 

@@ -20,7 +20,7 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
   types = ['CDI', 'CDD', 'Prestation de services', 'Intérim', 'Stage'];
   currenType = '';
   secteurs = ['Bâtiment et travaux publics', 'Immobilier', 'Télécommunication', 'Agroalimentaire',
-    'Commerce', 'Industries Alimentaires', 'Banques et Finances', 'Hôtellerie', 'Autres'];
+    'Commerce', 'Industries Alimentaires', 'Banque, Finance & Assurance', 'Hôtellerie', 'Autres'];
   currentSecteur = '';
   links = document.getElementsByClassName('side-btn');
   liBtn = document.getElementsByClassName('li-active');
@@ -30,9 +30,11 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private apiservice: SessionService, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
-      this.currenType = (params.type === 'all' ? '' : params.type);
-      this.currentRegion = (params.region === 'all' ? '' : params.region);
-      this.currentSecteur = (params.secteur === 'all' ? '' : params.secteur);
+      if (params.hasOwnProperty('type' || 'secteur' || 'region')) {
+         this.currenType = (params.type === 'all' ? '' : params.type);
+        this.currentRegion = (params.region === 'all' ? '' : params.region);
+        this.currentSecteur = (params.secteur === 'all' ? '' : params.secteur);
+      }
     });
     window.scrollTo(0, 0);
   }
@@ -55,9 +57,9 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.addCurrenType(this.currenType, this.currenType ? this.types.indexOf(this.currenType) : -1);
-    this.addCurrentRegion(this.currentRegion, this.currentRegion ? this.regions.indexOf(this.currentRegion) : -1);
-    this.addCurrentSecteur(this.currentSecteur, this.secteurs ? this.secteurs.indexOf(this.currentSecteur) : -1);
+    this.addCurrenType(this.currenType);
+    this.addCurrentRegion(this.currentRegion);
+    this.addCurrentSecteur(this.currentSecteur);
   }
 
   openSingkeJob(post) {
@@ -73,43 +75,48 @@ export class ListJobComponent implements OnInit, OnDestroy, AfterViewInit {
     this.size -= 5;
   }
 
-  addCurrentSecteur(secteur, index) {
+  addCurrentSecteur(secteur) {
     this.size = 5;
     this.currentSecteur = secteur;
-    index += 1;
+    const req = secteur.length > 0 ? secteur : 'Tous les secteurs';
     for (let i = 0; i < this.secteurBtn.length; i++) {
-      if (i !== index) {
-        this.secteurBtn[i].classList.remove('activeLink');
-      } else {
+      if (this.secteurBtn[i].firstChild.textContent === req) {
         this.secteurBtn[i].classList.toggle('activeLink');
+      } else {
+        this.secteurBtn[i].classList.remove('activeLink');
       }
     }
   }
 
-  addCurrenType(type, index) {
+  addCurrenType(type) {
     this.size = 5;
     this.currenType = type;
-    index += 1;
+    const req = type.length > 0 ? type : 'Tous les types';
     for (let i = 0; i < this.liBtn.length; i++) {
-      if (i !== index) {
-        this.liBtn[i].classList.remove('active');
-      } else {
+      if (this.liBtn[i].firstChild.textContent === req) {
         this.liBtn[i].classList.toggle('active');
+      } else {
+        this.liBtn[i].classList.remove('active');
       }
     }
   }
 
-  addCurrentRegion(region, index) {
+  addCurrentRegion(region) {
     this.size = 5;
     this.currentRegion = region;
-    index += 1;
+    const req = region.length > 0 ? region : 'Toutes les régions';
     for (let i = 0; i < this.links.length; i++) {
-      if (i !== index) {
-        this.links[i].classList.remove('activeLink');
-      } else {
+      if (this.links[i].firstChild.textContent === req) {
         this.links[i].classList.toggle('activeLink');
+      } else {
+        this.links[i].classList.remove('activeLink');
       }
     }
+  }
+
+  private getIndex(listObject: string[], key: string) {
+    console.log(listObject.indexOf(key));
+    return listObject.indexOf(key);
   }
 
   getPostStat(search?: string) {

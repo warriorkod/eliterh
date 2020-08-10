@@ -5,8 +5,8 @@
       <div class="col-lg-12">
         <div class="jobs-tab tab-item">
           <ul>
-            <li (click)="addCurrenType('', -1)" class="li-active">Tous les types</li>
-            <li (click)="addCurrenType(type, i)" *ngFor="let type of types; let i=index" class="li-active">{{type}}</li>
+            <li (click)="addCurrenType('')" class="li-active">Tous les types</li>
+            <li (click)="addCurrenType(type)" *ngFor="let type of types; let i=index" class="li-active">{{type}}</li>
           </ul>
         </div>
       </div>
@@ -15,7 +15,8 @@
       <div class="col-lg-8">
         <div class="main-content">
           <div class="single-content1">
-            <div (click)="openSingkeJob(post)" *ngFor="let post of posts | postsFilterByType : period | possFilterDate | locationFilter : currentRegion | typeJobFilter : currenType | secteurFilter : currentSecteur | lazyFilter : size; let i = index"
+            <div (click)="openSingkeJob(post)"
+                 *ngFor="let post of posts | postsFilterByType : period | possFilterDate | locationFilter : currentRegion | typeJobFilter : currenType | secteurFilter : currentSecteur | lazyFilter : size; let i = index"
                  class="single-job mb-4 d-lg-flex justify-content-between">
               <div class="job-text">
                 <h4>{{post.titre}}</h4>
@@ -40,40 +41,39 @@
         <div *ngIf="postsToFetch - size > 0" class="more-job-btn mt-5 text-center">
           <a (click)="getMorePost()" class="template-btn">Voir plus </a>
         </div>
-        <!--
-        <div *ngIf="postsToFetch  - size > 5" class="more-job-btn mt-5 text-center">
-          <a (click)="getFewerPost()" class="template-btn">Voir moins</a>
-        </div>
-        -->
       </div>
       <div class="col-lg-4">
         <div class="sidebar mt-5 mt-lg-0">
           <div class="single-item mb-4">
             <h4 class="mb-4">Emplois par secteur</h4>
-            <a (click)="addCurrentSecteur('', -1)" class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn"
+            <a (click)="addCurrentSecteur('')" class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn"
                href="javascript:void(0);">
               <span>Tous les secteurs</span>
               <span class="text-right">{{getPostStat()}} job</span>
             </a>
-            <a (click)="addCurrentSecteur(secteur, i)" *ngFor="let secteur of secteurs; let i=index"
-               class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn"
-               href="javascript:void(0);">
-              <span>{{secteur}}</span>
-              <span class="text-right">{{getPostStat(secteur)}} job</span>
-            </a>
+            <ng-container *ngFor="let secteur of secteurs; let i=index">
+              <a (click)="addCurrentSecteur(secteur)" *ngIf="getPostStat(secteur) > 0"
+                 class="sidebar-btn d-flex justify-content-between mb-3 secteur-btn"
+                 href="javascript:void(0);">
+                <span>{{secteur}}</span>
+                <span class="text-right">{{getPostStat(secteur)}} job</span>
+              </a>
+            </ng-container>
           </div>
           <div class="single-item mb-4">
             <h4 class="mb-4">Emplois par régions</h4>
-            <a (click)="addCurrentRegion('',-1)" class="sidebar-btn d-flex justify-content-between mb-3 side-btn"
+            <a (click)="addCurrentRegion('')" class="sidebar-btn d-flex justify-content-between mb-3 side-btn"
                href="javascript:void(0);">
               <span>Toutes les régions</span>
               <span class="text-right">{{getPostStat()}} job</span>
             </a>
-            <a (click)="addCurrentRegion(region, i)" *ngFor="let region of regions; let i=index"
-               class="sidebar-btn d-flex justify-content-between mb-3 side-btn" href="javascript:void(0);">
-              <span>{{region}}</span>
-              <span class="text-right">{{getPostStat(region)}} job</span>
-            </a>
+            <ng-container *ngFor="let region of regions; let i=index">
+              <a (click)="addCurrentRegion(region)" *ngIf="getPostStat(region) > 0"
+                 class="sidebar-btn d-flex justify-content-between mb-3 side-btn" href="javascript:void(0);">
+                <span>{{region}}</span>
+                <span class="text-right">{{getPostStat(region)}} job</span>
+              </a>
+            </ng-container>
           </div>
 
         </div>

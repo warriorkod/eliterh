@@ -73,7 +73,7 @@
         <input formControlName="dateNaissance" matInput placeholder="Date de naissance" required type="date">
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Civilité" formControlName="civilite" id="fcivilite" required>
+        <mat-select formControlName="civilite" id="fcivilite" placeholder="Civilité" required>
           <mat-option value="">Civilité</mat-option>
           <mat-option value="Mr">Mr</mat-option>
           <mat-option value="Mme">Mme</mat-option>
@@ -84,7 +84,7 @@
         <input formControlName="adresse" matInput placeholder="Adresse" required type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Niveau d'étude" formControlName="etudeLevel" id="fniveau_etude" required>
+        <mat-select formControlName="etudeLevel" id="fniveau_etude" placeholder="Niveau d'étude" required>
           <mat-option value="">Niveau d'étude</mat-option>
           <mat-option value="BFEM">BFEM</mat-option>
           <mat-option value="BAC">BAC</mat-option>
@@ -97,7 +97,8 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Niveau d'experience" formControlName="experienceLevel" id="fniveau_experience" required>
+        <mat-select formControlName="experienceLevel" id="fniveau_experience" placeholder="Niveau d'experience"
+                    required>
           <mat-option value="">Niveau d'expérience</mat-option>
           <mat-option value="moins d'un an">Moins d'un an</mat-option>
           <mat-option value="1 à 3ans">1 à 3ans</mat-option>
@@ -107,7 +108,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Lieu" formControlName="lieu" id="flieu" required>
+        <mat-select formControlName="lieu" id="flieu" placeholder="Lieu" required>
           <mat-option value="">Lieu du poste</mat-option>
           <mat-option value="Dakar">Dakar</mat-option>
           <mat-option value="Diourbel">Diourbel</mat-option>
@@ -126,7 +127,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Domaine actuel" formControlName="actualDomain" id="fdomaine_actuel" required>
+        <mat-select formControlName="actualDomain" id="fdomaine_actuel" placeholder="Domaine actuel" required>
           <mat-option value="">Secteur du poste occupé</mat-option>
           <mat-option value="Bâtiment et travaux publics">Bâtiment et travaux publics</mat-option>
           <mat-option value="Immobilier">Immobilier</mat-option>
@@ -139,7 +140,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Domaine recherché" formControlName="searchDomain" id="fdomaine_recherche" required>
+        <mat-select formControlName="searchDomain" id="fdomaine_recherche" placeholder="Domaine recherché" required>
           <mat-option value="">Secteur du poste recherché</mat-option>
           <mat-option value="Bâtiment et travaux publics">Bâtiment et travaux publics</mat-option>
           <mat-option value="Immobilier">Immobilier</mat-option>
@@ -174,7 +175,8 @@
         <input formControlName="new_password" matInput placeholder="Nouveau de passe" required type="password">
       </mat-form-field>
       <mat-form-field>
-        <input (click)="clearInput()" formControlName="confirm_new_password" matInput placeholder="Confirmation du nouveau mot de passe"
+        <input (click)="clearInput()" formControlName="confirm_new_password" matInput
+               placeholder="Confirmation du nouveau mot de passe"
                required type="password">
         <span *ngIf='errorMessage' class="dark_error">{{errorMessage}}</span>
       </mat-form-field>

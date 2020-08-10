@@ -8,15 +8,14 @@ export class LoadingScreenService {
 
   loadingStatus = new Subject();
 
-  // tslint:disable-next-line:variable-name
-  private _loading = false;
+  private isLoading = false;
 
   get loading(): boolean {
-    return this._loading;
+    return this.isLoading;
   }
 
   set loading(value) {
-    this._loading = value;
+    this.isLoading = value;
     this.loadingStatus.next(value);
   }
 

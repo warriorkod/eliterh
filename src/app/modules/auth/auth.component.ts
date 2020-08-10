@@ -25,8 +25,8 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit {
     {nom: 'Télécommunication', img: 'telecommunication.png'},
     {nom: 'Agroalimentaire', img: 'amber_109461.png'},
     {nom: 'Commerce', img: 'commerce.png'},
-    {nom: 'Industries alimentaires', img: 'Sushi-icon_30268.png'},
-    {nom: 'Banques et finances', img: 'banque.png'},
+    {nom: 'Industries Alimentaires', img: 'Sushi-icon_30268.png'},
+    {nom: 'Banque, Finance & Assurance', img: 'banque.png'},
     {nom: 'Hôtellerie', img: '1496677265-2_84643.png'}
   ];
   showText = true;
@@ -49,11 +49,11 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit {
     );
     this.apiservice.emitPosts();
     this.buildSeachForm();
-    this.changeCurrenType('', 0);
+    this.changeCurrenType('');
   }
 
   ngAfterViewInit(): void {
-    this.changeCurrenType('', 0);
+    this.changeCurrenType('');
   }
 
 
@@ -78,13 +78,14 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit {
     this.router.navigate(['/job/list-job/all/all/' + secteur]);
   }
 
-  changeCurrenType(type, index) {
+  changeCurrenType(type) {
     this.currenType = type;
+    const req = type.length > 0 ? type : 'récent';
     for (let i = 0; i < this.linkBtn.length; i++) {
-      if (i !== index) {
-        this.linkBtn[i].classList.remove('active');
-      } else {
+      if (this.linkBtn[i].firstChild.textContent === req) {
         this.linkBtn[i].classList.toggle('active');
+      } else {
+        this.linkBtn[i].classList.remove('active');
       }
     }
   }

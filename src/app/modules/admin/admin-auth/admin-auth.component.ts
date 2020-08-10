@@ -26,7 +26,7 @@ export class AdminAuthComponent implements OnInit {
   onLogin(formValue) {
     this.apiService.signInUser(formValue).then(
       () => {
-        this.router.navigate(['/admin_home_elith_rh']);
+        this.router.navigate(['/admin_home_elith_rh']).then();
       },
       (error) => {
         this.errorMessage = error;
