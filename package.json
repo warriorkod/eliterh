@@ -29,7 +29,7 @@
     "@sweetalert2/ngx-sweetalert2": "^7.3.0",
     "@tinymce/tinymce-angular": "^3.6.0",
     "@types/googlemaps": "^3.39.6",
-    "angular-datatables": "^8.1.0",
+    "angular-datatables": "^16.0.0",
     "angularfire2": "^5.4.2",
     "bootstrap": "^4.5.0",
     "datatables.net": "^1.10.21",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.8",
-    "@angular/cli": "^9.1.8",
+    "@angular/cli": "^16.1.4",
     "@angular/compiler-cli": "^9.1.11",
     "@angular/language-service": "^9.1.11",
     "@types/datatables.net": "^1.10.19",
